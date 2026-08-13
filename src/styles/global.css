@@ -1,0 +1,123 @@
+/* ============================================
+    Reset Global Básico
+============================================ */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Archivo Variable', sans-serif;
+    color: var(--col-secondary);
+    background-color: var(--col-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: auto;
+    text-wrap: balance;
+    margin-top: 0;
+}
+
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+
+/* ==================== VARIABLES ==================== */
+:root {
+
+/* ----------- COLORS ----------- */
+    --col-primary:    #F0F0F0;
+    --col-secondary:  #26272B;
+    --col-accent:     #F07E39;
+    --col-gray:       #808080;
+    --col-card:       #DADADA;
+    --col-txtSec:     #26272B9E;
+
+
+/* ----------- FONT WEIGHTS ----------- */
+    --fw-titleCard:   600;
+    --fw-heroTitle:   800;
+
+
+/* ----------- FONT VARIATIONS ----------- */
+    --fv-titleS:      "wdth" 115;
+
+
+/* ----------- FONT SIZES ----------- */
+/*
+    --fs-small:       0.875rem;
+
+    --fs-tag:         0.75rem;
+    --fs-body:        clamp(0.875rem, 0.9vw, 1rem);
+    --fs-h1:          clamp(1.75rem, 2.5vw, 3rem);
+
+    --fs-tag:         clamp(0.75rem,      0.72vw,     0.875rem);
+*/
+
+    --fs-h1:            clamp(1.75rem,      1.382rem + 1.636vw,     4rem);
+    --fs-h2:            clamp(1.5rem,       1.255rem + 1.091vw,     3rem);
+    --fs-h3:            clamp(1.125rem,     0.941rem + 0.818vw,     2.25rem);
+    --fs-h4:            clamp(1rem,         0.877rem + 0.545vw,     1.75rem);
+    --fs-p:             clamp(0.9375rem,    0.912rem + 0.127vw,     1.125rem);
+    --fs-span:          clamp(0.875rem,     0.855rem + 0.091vw,     1rem);
+    --fs-strong:        clamp(1rem,         0.98rem + 0.091vw,      1.125rem);
+
+
+/* ----------- LINE HEIGHTS ----------- */
+    --lh-item:        1.5;
+    --lh-textL:       1.7;
+
+
+/* ----------- GRADIENTS ----------- */
+    --gradiente-right: 50%;
+    --gradiente-top:   30%;
+
+
+}
+
+@media (max-width: 1300px) { :root { --gradiente-right: 60%; } }
+@media (max-width: 900px)  { :root { --gradiente-right: 70%; } }
+@media (max-width: 750px)  { :root { --gradiente-right: 80%; } }
+@media (max-width: 650px)  { :root { --gradiente-right: 90%; } }
+@media (max-width: 501px)  { :root { --gradiente-right: 100%; } }
+
+
+/*
+
+CLAMP PROPIEDAD - ELIMINAR AL FINAL
+
+vw = (tamaño deseado / ancho del viewport) × 100
+
+(48 / 1920) × 100 = 2.5vw
+
+----------------
+
+VALOR MINIMO PARA MOVILES   = 360px
+VALOR MAXIMO PC             = 1920px
+
+*/

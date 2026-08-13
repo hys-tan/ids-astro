@@ -1,0 +1,165 @@
+/* ==================== HERO CONTAINER ==================== */
+.heroContainer {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--col-primary);
+    /* padding-top: 146px; */
+    padding-inline: 7rem;
+}
+
+/* ==================== BACKGROUND IMAGE ==================== */
+.backgroundImage {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    background:
+        linear-gradient(to right,
+            var(--col-primary) 0%,
+            transparent var(--gradiente-right)),
+        linear-gradient(to top,
+            var(--col-primary) 0%,
+            transparent var(--gradiente-top)),
+        url('../../assets/img5.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    filter: grayscale(100%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+
+/* ==================== CONTENT WRAPPER ==================== */
+.contentWrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(1.5rem, 2.5vw, 3rem);
+    width: 100%;
+    max-width: 98.5rem;
+}
+
+/* ==================== BADGE ==================== */
+.badge {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--col-accent);
+    font-size: var(--fs-span);
+    font-weight: var(--fw-titleCard);
+    letter-spacing: 1px;
+}
+
+/* ==================== TITLE ==================== */
+.title {
+    font-size: var(--fs-h1);
+    font-weight: var(--fw-heroTitle);
+    font-variation-settings: var(--fv-titleS);
+    line-height: var(--lh-item);
+    color: var(--col-secondary);
+    margin: 0;
+    text-shadow: 0px 0px 5px var(--col-primary);
+}
+
+.titleAccent {
+    color: var(--col-accent);
+    display: block;
+}
+
+/* ==================== DESCRIPTION ==================== */
+.description {
+    font-size: var(--fs-p);
+    line-height: var(--lh-textL);
+    margin: 0;
+    max-width: 650px;
+    text-shadow: 0px 0px 5px var(--col-primary);
+}
+
+/* ==================== CTA BUTTONS ==================== */
+.ctaContainer {
+    display: flex;
+    gap: clamp(1.5rem, 1.7vw, 2rem);
+    flex-wrap: wrap;
+}
+
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1300px) {
+    .heroContainer {
+        padding-inline: 2rem;
+        padding-top: 92px;
+    }
+
+    .backgroundImage {
+        width: 70%;
+        opacity: 0.6;
+    }
+}
+
+@media (max-width: 900px) {
+    .backgroundImage {
+        width: 80%;
+        opacity: 0.55;
+    }
+}
+
+@media (max-width: 750px) {
+    .backgroundImage {
+        width: 90%;
+    }
+}
+
+@media (max-width: 650px) {
+    .backgroundImage {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .ctaContainer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 501px) {
+    /* empty */
+}
+
+@media (max-width: 430px) {
+    .ctaContainer {
+        align-items: normal;
+        width: 100%;
+    }
+
+    /* Hace que los motion.div estiren los botones en su interior */
+    .ctaContainer > div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 390px) {
+    .heroContainer {
+        padding-inline: 1rem;
+    }
+}
+
+
+/*
+
+LAS IMAGENES DE LOS HEROS CAMBIARLOS A B/N NATIVO SIN FILTER
+
+ELIMINAR LUEGO ^^^^
+
+*/

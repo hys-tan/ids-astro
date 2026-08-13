@@ -1,0 +1,133 @@
+/* ==================== BASE BUTTON STYLES ==================== */
+.button {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.9rem 1.5rem;
+    height: 46px;
+    border-radius: 4px;
+    font-size: var(--fs-span);
+    font-weight: var(--fw-titleCard);
+    letter-spacing: 0.5px;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+    font-variation-settings: inherit;
+    text-transform: uppercase;
+    outline: none;
+    transform: translateZ(0);
+    transition:
+        background-color 0.3s ease-in-out,
+        border-color 0.3s ease-in-out,
+        color 0.3s ease-in-out,
+        transform 0.3s ease-in-out;
+}
+
+.button:focus, .button:active {
+    outline: none;
+}
+
+/* El círculo que se expande desde abajo */
+.button::after {
+    content: "";
+    width: 100%;
+    height: 0%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition:
+        height 0.4s ease-in-out,
+        border-radius 0.4s ease-in-out,
+        transform 0.4s ease-in-out;
+    border-radius: 0%;
+    transform: scale(1);
+    z-index: 10;
+}
+
+.button:hover::after {
+    bottom: auto;
+    top: 0;
+    height: 100%;
+    border-radius: 50%;
+    transform: scale(1.5);
+}
+
+.button span {
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    text-align: center;
+    transition: color 0.3s ease-in-out;
+    display: block;
+    padding: 0;
+}
+
+/* La animación al hacer hover en el texto */
+.button:hover span {
+    animation: scaleUp 0.3s ease-in-out;
+}
+
+@keyframes scaleUp {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+/* ==================== VARIANTES DE COLOR ==================== */
+
+/* Primary */
+.primary {
+    background: var(--col-accent);
+    color: var(--col-primary);
+    border: none;
+}
+.primary::after {
+    background: var(--col-secondary);
+}
+.primary:hover span {
+    color: var(--col-accent);
+}
+
+
+/* Secondary */
+.secondary {
+    background: transparent;
+    color: var(--col-secondary);
+    border: 1px solid var(--col-secondary);
+}
+.secondary::after {
+    background: var(--col-secondary);
+}
+.secondary:hover span {
+    color: var(--col-primary);
+}
+
+
+/* Tertiary */
+.tertiary {
+    background: var(--col-secondary);
+    color: var(--col-primary);
+    border: none;
+}
+.tertiary::after {
+    background: var(--col-primary);
+}
+.tertiary:hover span {
+    color: var(--col-accent);
+}
+
+
+/* Quaternary */
+.quaternary {
+    background: var(--col-card);
+    color: var(--col-txtSec);
+    border: none;
+}
+.quaternary::after {
+    background: var(--col-secondary);
+}
+.quaternary:hover span {
+    color: var(--col-primary);
+}

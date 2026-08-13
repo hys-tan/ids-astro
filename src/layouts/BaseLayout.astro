@@ -1,0 +1,54 @@
+---
+import '@fontsource-variable/archivo/wdth.css';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { 
+	title, 
+	description = "Empresa especializada en servicios técnicos integrales: mantenimiento preventivo y correctivo." 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+
+
+		<!-- Icono clásico de respaldo (el ICO que generaste) -->
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+		<!-- Icono moderno en alta calidad (tu logo SVG) -->
+		<link rel="icon" type="image/svg+xml" href="/idelsi.svg" />
+
+		<!-- Icono para celulares Apple (el PNG que te generó favicon.io) -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+		<!-- Iconos para Android/Chrome y el Manifiesto que configuramos -->
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO Básico -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+	</head>
+	<body>
+		<!-- Aquí se inyecta el Navbar en el futuro -->
+		
+		<slot /> <!-- Aquí va el contenido de cada página -->
+		
+		<!-- Aquí se inyecta el Footer en el futuro -->
+	</body>
+</html>
+
+
+<!-- MODIFICAR AL FINAL PARA EL SEO -->
