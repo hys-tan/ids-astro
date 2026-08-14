@@ -55,7 +55,7 @@ const {
 			
 			// Solo ejecutamos esto en el navegador
 			if (typeof window !== 'undefined') {
-				const lenis = new Lenis({
+				window.lenis = new Lenis({
 					autoRaf: true,
 					lerp: 0.08,
 					wheelMultiplier: 1.2

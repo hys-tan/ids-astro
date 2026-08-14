@@ -57,11 +57,14 @@ const Navbar = () => {
     useEffect(() => {
         if (isMenuOpen) {
             document.body.style.overflow = 'hidden';
+            if (typeof window !== 'undefined' && (window as any).lenis) (window as any).lenis.stop();
         } else {
             document.body.style.overflow = '';
+            if (typeof window !== 'undefined' && (window as any).lenis) (window as any).lenis.start();
         }
         return () => {
             document.body.style.overflow = '';
+            if (typeof window !== 'undefined' && (window as any).lenis) (window as any).lenis.start();
         };
     }, [isMenuOpen]);
 
