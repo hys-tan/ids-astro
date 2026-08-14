@@ -1,0 +1,449 @@
+/* ============================================
+    HEADER WRAPPER — Wrapper Technique
+    Se mueve como una sola unidad mediante transform
+============================================ */
+.siteHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 60;
+    background-color: var(--col-primary);
+    box-shadow: 0 4px 6px -1px var(--col-shadow);
+    transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* SCROLL DOWN → Todo el wrapper se oculta (-100%) */
+.hide {
+    transform: translateY(-100%);
+}
+
+/* SCROLL UP → Desplaza hacia arriba la altura del top bar
+    La top bar sale del viewport y el main nav queda pegado a top: 0 */
+.showNavOnly {
+    transform: translateY(-54px); /* Asumiendo que el top bar mide 54px */
+}
+
+/* AT TOP → Sin clases extra = posición natural (transform: none) */
+
+
+/* ============================================
+    TOP NAVIGATION
+============================================ */
+.topNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 54px;
+    padding: 0 7rem;
+    font-size: var(--fs-span);
+    color: var(--col-topNav);
+    font-variation-settings: var(--fv-nav);
+    border-bottom: 1.5px solid var(--col-borderS);
+}
+
+.topNavInner {
+    width: 100%;
+    max-width: 98.5rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4rem;
+}
+
+.topNavItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.topNav svg {
+    font-size: var(--fs-span);
+}
+
+.topNav a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--col-topNav);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.topNav a:hover {
+    color: var(--col-ovModal);
+}
+
+.divider {
+    display: none;
+}
+
+
+/* ============================================
+    MAIN NAV
+============================================ */
+.mainNav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 7rem;
+}
+
+.mainNavInner {
+    width: 100%;
+    max-width: 98.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: clamp(50px, 3.125vw, 60px);
+    width: clamp(100px, 5.72vw, 110px);
+}
+
+.logoLink {
+    display: inline-block;
+}
+
+/* Actions container: Hamburger + CTA */
+.navActions {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+
+/* ============================================
+    HAMBURGER WRAPPER (hamburger-react library)
+============================================ */
+.hamburgerWrapper {
+    position: relative;
+    z-index: 100;
+}
+
+
+/* ============================================
+    MEGA DROPDOWN - DESKTOP
+============================================ */
+.megaDropdown {
+    max-height: 0;
+    overflow: hidden;
+    background-color: var(--col-primary);
+    transition: max-height 0.6s ease, padding 0.8s ease;    /* delete padding */
+    padding: 0 7rem;
+}
+
+.megaDropdown.open {
+    max-height: 250px;
+    padding: 2rem 7rem;     /* padding: 0 7rem; */
+}
+
+.megaDropdownContent {
+    /* padding: 2rem 0; */
+    display: flex;
+    justify-content: flex-end;
+    gap: clamp(6rem, 8.3vw, 10rem);
+    max-width: 98.5rem;
+    margin: 0 auto;
+}
+
+.megaColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-width: 150px;
+    font-size: var(--fs-span);
+    text-align: right;
+}
+
+.columnTitle {
+    color: var(--col-secondary);
+    text-decoration: none;
+    display: block;
+    font-variation-settings: var(--fv-nav);
+    font-weight: var(--fw-links);
+}
+
+.columnLinks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    font-variation-settings: var(--fv-nav);
+}
+
+.columnLinks li a {
+    color: var(--col-borForm);
+    text-decoration: none;
+    transition: color 0.5s ease;
+    font-weight: var(--fw-h4);
+    font-variation-settings: var(--fv-nav);
+}
+
+.megaDropdownContent:has(a:hover) .columnLinks li a:not(:hover) {
+    color: var(--col-drop);
+}
+
+.columnLinks li a:hover {
+    color: var(--col-secondary);
+}
+
+
+/* ============================================
+    MOBILE MENU - FULLSCREEN ACCORDION
+============================================ */
+.mobileMenu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 550px;
+    height: 100vh;
+    min-height: 100dvh;
+    background-color: var(--col-primary);
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in-out;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0;
+    padding-inline: 2rem;
+}
+
+.mobileMenu.open {
+    transform: translateX(0);
+}
+
+.mobileMenuContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem;
+    font-weight: var(--fw-links);
+}
+
+.mobileMenuItem {
+    font-size: var(--fs-p);
+    color: var(--col-secondary);
+    text-decoration: none;
+    padding: 0.8rem 0;
+    font-variation-settings: var(--fv-nav);
+}
+
+
+/* ============================================
+    ACCORDION STYLES
+============================================ */
+.accordionHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: var(--fs-p);
+    color: var(--col-secondary);
+    font-variation-settings: var(--fv-nav);
+    font-weight: var(--fw-links);
+}
+
+.accordionIcon {
+    transition: transform .3s ease;
+    font-size: var(--fs-span);
+}
+
+.accordionHeader.active .accordionIcon {
+    transform: rotate(180deg);
+}
+
+.accordionContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease-in-out;
+    padding-left: 1rem;
+    font-variation-settings: var(--fv-nav);
+    font-weight: var(--fw-h4);
+}
+
+.accordionContent.open {
+    max-height: 140px;
+}
+
+.accordionLink {
+    padding: 0.8rem 0;
+}
+
+.accordionLink a {
+    color: var(--col-topNav);
+    text-decoration: none;
+    font-size: var(--fs-span);
+    transition: color .3s ease;
+}
+
+.accordionLink a:hover {
+    color: var(--col-secondary);
+}
+
+/* CTA Button Mobile */
+.ctaButtonMobile {
+    margin-top: 1rem;
+}
+
+
+/* ============================================
+    DESKTOP OVERLAY (Mega Dropdown)
+============================================ */
+.desktopOverlay {
+    position: fixed;
+    inset: 0;
+    background-color: var(--col-ov2);
+    z-index: 55;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+}
+
+.desktopOverlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* ============================================
+    OVERLAY (Mobile)
+============================================ */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--col-ov2);
+    z-index: 40;
+    overflow: hidden;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+}
+
+
+/* ============================================
+    RESPONSIVE STYLES
+============================================ */
+
+@media (max-width: 1300px) {
+    .topNav {
+        padding: 0 2rem;
+    }
+
+    .mainNav {
+        padding: 1rem 2rem;
+    }
+
+    .megaDropdown {
+        padding: 0 2rem;
+    }
+
+    .megaDropdown.open {
+        padding: 2rem;      /* padding: 0 2 rem; */
+    }
+}
+
+@media (max-width: 1100px) {
+    .siteHeader {
+        z-index: 250;
+    }
+    .siteHeader.menuOpen {
+        background-color: transparent;
+        box-shadow: none;
+        pointer-events: none;
+    }
+    .mainNavInner {
+        pointer-events: auto;
+    }
+
+    .topNav, .divider {
+        display: none;
+    }
+
+    /* Cuando no hay top bar, el showNavOnly no necesita offset */
+    .showNavOnly {
+        transform: translateY(0);
+    }
+
+    .mainNavInner {
+        position: relative;
+        justify-content: center;
+    }
+
+    .navActions {
+        position: absolute;
+        left: 0;
+        gap: 0;
+    }
+
+    .hamburgerWrapper {
+        z-index: 250;
+    }
+
+    .logoLink {
+        display: flex;
+        justify-content: center;
+    }
+
+    .ctaButton, .megaDropdown, .desktopOverlay {
+        display: none;
+    }
+
+    .mobileMenu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .overlay {
+        display: block;
+    }
+}
+
+@media (max-width: 900px) {
+    /* empty */
+}
+
+@media (max-width: 600px) {
+    .ctaButtonMobile {
+        width: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+    .mobileMenu {
+        max-width: 100%;
+    }
+    .overlay {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+}
+
+@media (max-width: 501px) {
+    /* empty */
+}
+
+@media (max-width: 390px) {
+    .mainNav, .mobileMenu {
+        padding-inline: 1rem;
+    }
+}
