@@ -299,9 +299,7 @@ const Navbar = () => {
             </div>
 
             {/* Overlay para cerrar el menú al hacer clic fuera (mobile) */}
-            {isMenuOpen && (
-                <div className={styles.overlay} onClick={handleCloseMenu}></div>
-            )}
+            <div className={`${styles.overlay} ${isMenuOpen ? styles.active : ''}`} onClick={handleCloseMenu}></div>
         </>
     );
 };
