@@ -97,6 +97,20 @@ const Navbar = () => {
                 onClick={handleCloseMenu}
             ></div>
 
+            
+            {/* ==================== HAMBURGER ICON (CAPA 1) ==================== */}
+            <div className={`${styles.hamburgerFixed} ${scrollClass}`}>
+                <Hamburger
+                    toggled={isMenuOpen}
+                    toggle={setMenuOpen}
+                    size={28}
+                    color="#26272B"
+                    duration={0.4}
+                    rounded
+                    label="Toggle menu"
+                />
+            </div>
+
             {/* ==================== HEADER WRAPPER ==================== */}
             <header className={`${styles.siteHeader} ${scrollClass} ${isMenuOpen ? styles.menuOpen : ''}`}>
 
@@ -139,8 +153,8 @@ const Navbar = () => {
 
                         {/* Actions container: Hamburger + CTA */}
                         <div className={styles.navActions}>
-                            {/* Hamburger button */}
-                            <div className={styles.hamburgerWrapper}>
+                            {/* Hamburger button (Desktop) */}
+                            <div className={styles.hamburgerDesktop}>
                                 <Hamburger
                                     toggled={isMenuOpen}
                                     toggle={setMenuOpen}
@@ -151,6 +165,7 @@ const Navbar = () => {
                                     label="Toggle menu"
                                 />
                             </div>
+
 
                             {/* CTA Button - siempre visible en desktop */}
                             <Button variant="secondary"
