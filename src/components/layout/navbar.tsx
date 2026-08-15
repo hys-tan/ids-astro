@@ -15,6 +15,14 @@ import styles from './navbar.module.css';
 // DATOS
 import { navData } from '../../data/navigation';
 
+const HAMBURGER_PROPS = {
+    size: 28,
+    color: "#26272B",
+    duration: 0.4,
+    rounded: true,
+    label: "Toggle menu"
+} as const;
+
 
 const Navbar = () => {
     const [isMenuOpen, setMenuOpen] = useState(false);
@@ -73,15 +81,7 @@ const Navbar = () => {
             
             {/* ==================== HAMBURGER ICON (CAPA 1) ==================== */}
             <div className={`${styles.hamburgerFixed} ${scrollClass}`}>
-                <Hamburger
-                    toggled={isMenuOpen}
-                    toggle={setMenuOpen}
-                    size={28}
-                    color="#26272B"
-                    duration={0.4}
-                    rounded
-                    label="Toggle menu"
-                />
+                <Hamburger toggled={isMenuOpen} toggle={setMenuOpen} {...HAMBURGER_PROPS} />
             </div>
 
             {/* ==================== HEADER WRAPPER ==================== */}
@@ -128,15 +128,7 @@ const Navbar = () => {
                         <div className={styles.navActions}>
                             {/* Hamburger button (Desktop) */}
                             <div className={styles.hamburgerDesktop}>
-                                <Hamburger
-                                    toggled={isMenuOpen}
-                                    toggle={setMenuOpen}
-                                    size={28}
-                                    color="#26272B"
-                                    duration={0.4}
-                                    rounded
-                                    label="Toggle menu"
-                                />
+                                <Hamburger toggled={isMenuOpen} toggle={setMenuOpen} {...HAMBURGER_PROPS} />
                             </div>
 
 
