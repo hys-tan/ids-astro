@@ -47,6 +47,7 @@ const FINAL_SCALE = 1.0;
 const ServicesPrev = () => {
     const gridRef = useRef<HTMLDivElement>(null);
     const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const ticking = useRef(false);
 
     const calculateCardScales = () => {
         const grid = gridRef.current;
@@ -69,14 +70,23 @@ const ServicesPrev = () => {
         });
     };
 
-    
+    // Throttle: solo ejecuta calculateCardScales una vez por frame de animación
+    const onScroll = () => {
+        if (ticking.current) return;
+        ticking.current = true;
+        requestAnimationFrame(() => {
+            calculateCardScales();
+            ticking.current = false;
+        });
+    };
+
     useEffect(() => {
         calculateCardScales();
-        window.addEventListener('resize', calculateCardScales, { passive: true });
-        window.addEventListener('scroll', calculateCardScales, { passive: true });
+        window.addEventListener('resize', onScroll, { passive: true });
+        window.addEventListener('scroll', onScroll, { passive: true });
         return () => {
-            window.removeEventListener('resize', calculateCardScales);
-            window.removeEventListener('scroll', calculateCardScales);
+            window.removeEventListener('resize', onScroll);
+            window.removeEventListener('scroll', onScroll);
         };
     }, []);
 
