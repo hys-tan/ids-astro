@@ -5,5 +5,13 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://dominio.com',
   integrations: [react()]
 });
+
+
+/*
+
+MODIFICAR AL FINAL PARA EL SEO
+
+*/
