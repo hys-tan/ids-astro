@@ -99,7 +99,7 @@ html.lenis, html.lenis body {
     --col-borForm:    #868686;
     --col-drop:       #BBBBBB;
     --col-shadow:     rgba(0, 0, 0, 0.1);
-    --col-ov2:        rgba(0, 0, 0, 0.5);
+    --col-ov2:        rgba(10, 10, 10, 0.92); /* Updated for solid dark mode (No Blur) */
     --col-ovModal:    rgba(0, 0, 0, 0.7);
 
 

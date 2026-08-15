@@ -250,7 +250,7 @@
     font-size: var(--fs-p);
     color: var(--col-secondary);
     text-decoration: none;
-    padding: 0.8rem 0;
+    padding: 0;        /* 0.8rem 0 */
     font-variation-settings: var(--fv-nav);
 }
 
@@ -276,7 +276,7 @@
 
 .accordionIcon {
     transition: transform .3s ease;
-    font-size: var(--fs-span);
+    font-size: var(--fs-p);
 }
 
 .accordionHeader.active .accordionIcon {
@@ -303,7 +303,7 @@
 .accordionLink a {
     color: var(--col-topNav);
     text-decoration: none;
-    font-size: var(--fs-span);
+    font-size: var(--fs-p);
     transition: color .3s ease;
 }
 
@@ -323,14 +323,12 @@
 .desktopOverlay {
     position: fixed;
     inset: 0;
-    background-color: var(--col-ov2);
+    background-color: var(--col-ovModal);
     z-index: 55;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     pointer-events: none;
-    -webkit-backdrop-filter: blur(3px);
-    backdrop-filter: blur(3px);
 }
 
 .desktopOverlay.active {
@@ -350,11 +348,9 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: var(--col-ov2);
+    background-color: var(--col-ovModal);
     z-index: 300;
     overflow: hidden;
-    -webkit-backdrop-filter: blur(3px);
-    backdrop-filter: blur(3px);
 
     opacity: 0;
     visibility: hidden;
@@ -467,10 +463,6 @@
 @media (max-width: 520px) {
     .mobileMenu {
         width: 100%;        /* mantener linea */
-    }
-    .overlay {
-        -webkit-backdrop-filter: none;
-        backdrop-filter: none;
     }
 }
 
