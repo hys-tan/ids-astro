@@ -12,39 +12,9 @@ import Button from '../common/button';
 // ESTILOS
 import styles from './navbar.module.css';
 
-// Datos de navegación
-const navData = {
-    inicio: {
-        title: 'Menú Principal',
-        items: [
-            { label: 'Inicio', link: '/' },
-        ]
-    },
-    servicios: {
-        title: 'Servicios',
-        items: [
-            { label: 'Mantenimiento', link: '#' },
-            { label: 'Reparación', link: '#' },
-            { label: 'Instalación', link: '#' },
-        ]
-    },
-    productos: {
-        title: 'Productos',
-        items: [
-            { label: 'Venta de Equipos', link: '#' },
-            { label: 'Alquiler de Equipos', link: '#' },
-            { label: 'Repuestos', link: '#' },
-        ]
-    },
-    nosotros: {
-        title: 'Nosotros',
-        items: [
-            { label: '¿Quiénes Somos?', link: '#' },
-            { label: 'Misión y Visión', link: '#' },
-            { label: 'Nuestros Clientes', link: '#' },
-        ]
-    }
-};
+// DATOS
+import { navData } from '../../data/navigation';
+
 
 const Navbar = () => {
     const [isMenuOpen, setMenuOpen] = useState(false);
