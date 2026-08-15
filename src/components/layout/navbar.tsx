@@ -27,14 +27,14 @@ const Navbar = () => {
     useEffect(() => {
         if (isMenuOpen) {
             document.body.style.overflow = 'hidden';
-            if (typeof window !== 'undefined' && (window as any).lenis) (window as any).lenis.stop();
+            if (typeof window !== 'undefined' && window.lenis) window.lenis.stop();
         } else {
             document.body.style.overflow = '';
-            if (typeof window !== 'undefined' && (window as any).lenis) (window as any).lenis.start();
+            if (typeof window !== 'undefined' && window.lenis) window.lenis.start();
         }
         return () => {
             document.body.style.overflow = '';
-            if (typeof window !== 'undefined' && (window as any).lenis) (window as any).lenis.start();
+            if (typeof window !== 'undefined' && window.lenis) window.lenis.start();
         };
     }, [isMenuOpen]);
 
