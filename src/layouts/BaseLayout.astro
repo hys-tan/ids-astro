@@ -60,6 +60,25 @@ const {
 					lerp: 0.08,
 					wheelMultiplier: 1.2
 				});
+
+				// Interceptar enlaces con hash para Smooth Scroll sin modificar la URL
+				document.body.addEventListener('click', (e) => {
+					// @ts-ignore
+					const target = e.target.closest('a[href^="#"]');
+					if (target) {
+						const href = target.getAttribute('href');
+						if (href === '#') return;
+						
+						const targetElement = document.querySelector(href);
+						if (targetElement && window.lenis) {
+							e.preventDefault(); // Evitar salto instantáneo y adición del hash a la URL
+							window.lenis.scrollTo(targetElement, {
+								offset: 0,
+								duration: 1.2
+							});
+						}
+					}
+				});
 			}
 		</script>
 	</body>

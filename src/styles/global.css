@@ -89,6 +89,7 @@ html.lenis, html.lenis body {
     --col-primary:    #F0F0F0;
     --col-secondary:  #26272B;
     --col-accent:     #F46E34;
+    --col-txtOp:      #F0F0F0CC;
     --col-gray:       #808080;
     --col-card:       #DADADA;
     --col-txtSec:     #26272B9E;
@@ -103,15 +104,17 @@ html.lenis, html.lenis body {
 
 
 /* ----------- FONT WEIGHTS ----------- */
-    --fw-h4:          400;
-    --fw-links:       500;
-    --fw-titleCard:   600;
-    --fw-heroTitle:   800;
-
+    --fw-subtitle:      300;
+    --fw-h4:            400;
+    --fw-links:         500;
+    --fw-titleCard:     600;
+    --fw-heroTitle:     800;
 
 /* ----------- FONT VARIATIONS ----------- */
-    --fv-nav:         "wdth" 105;
-    --fv-titleS:      "wdth" 115;
+    --fv-nav:           "wdth" 105;
+    --fv-desc:          "wdth" 110;
+    --fv-title:         "wdth" 112;
+    --fv-titleS:        "wdth" 115;
 
 
 /* ----------- FONT SIZES ----------- */

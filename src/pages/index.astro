@@ -1,22 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HomePage from '../sections/inicio/homePage';
+import ServicesPrev from '../sections/inicio/servicesPrev';
 ---
 
 <BaseLayout title="Idelsi Soluciones | Inicio">
 	<main>
 		<HomePage client:load />
 
-		<!-- SECCIÓN DE EJEMPLO PARA PRUEBA DE SCROLL -->
-		<section style="height: 150vh; display: flex; align-items: center; justify-content: center; background-color: #f3f4f6; padding: 2rem;">
+		<ServicesPrev client:load />
+
+
+
+		<!-- SECCIÓN DE PRUEBA DE SCROLL -->
+		<section style="height: 500vh; display: flex; align-items: center; justify-content: center; background-color: #ccd8f0ff; padding: 2rem;">
 			<div style="text-align: center; max-width: 600px;">
-				<h2 style="font-size: 2rem; color: #1f2937; margin-bottom: 1rem;">Sección de Prueba de Scroll</h2>
-				<p style="font-size: 1.125rem; color: #4b5563; line-height: 1.5;">
-					Esta sección tiene una altura de 150vh para forzar la aparición de la barra de desplazamiento. 
-					Desplázate hacia abajo para ver cómo la Navbar se oculta, y desplázate ligeramente hacia arriba 
-					para ver cómo reaparece solo la navegación principal (ocultando la Top Bar).
+				<h2 style="font-size: 2rem; color: #1f2937; margin-bottom: 1rem; font-family: sans-serif;">Sección de Prueba de Scroll</h2>
+				<p style="font-size: 1.125rem; color: #4b5563; line-height: 1.5; font-family: sans-serif;">
+					Esta sección tiene una altura de 100vh para permitir hacer más scroll después de la sección de servicios.
 				</p>
 			</div>
 		</section>
 	</main>
 </BaseLayout>
+
+
+/*
+
+Mantener la sección de prueba, se eliminará al finalizar esta página
+
+*/
