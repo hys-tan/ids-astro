@@ -51,10 +51,10 @@
     opacity: 0.6;
     filter: grayscale(100%);
     transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
-    will-change: transform;
 }
 
 .card:hover .cardImage {
+    will-change: transform;
     transform: scale(1.1);
     opacity: 0.9;
     filter: grayscale(0%);
