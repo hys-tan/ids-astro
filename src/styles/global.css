@@ -18,7 +18,8 @@ body {
     font-family: 'Archivo Variable', sans-serif;
     color: var(--col-secondary);
     background-color: var(--col-primary);
-    line-height: 1.6;
+    font-weight: var(--fw-subtitle);
+    font-variation-settings: var(--fv-desc);
     overflow-x: hidden;
 }
 
