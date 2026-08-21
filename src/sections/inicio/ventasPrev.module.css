@@ -1,0 +1,157 @@
+/* ==================== CONTAINER ==================== */
+.container {
+    width: 100%;
+    background-color: var(--col-primary);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 7rem;
+}
+
+.mainContent {
+    display: flex;
+    width: 100%;
+    max-width: 98.5rem;
+    margin: 0 auto;
+    gap: clamp(1.5rem, 2.09vw, 2.5rem);
+}
+
+/* ==================== IMAGE SIDE (LEFT) ==================== */
+.imageContainer {
+    width: 40%;
+    height: clamp(450px, 28.7vw, 550px);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--col-icon);
+}
+
+.productImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+}
+
+/* ==================== TEXT SIDE (RIGHT) ==================== */
+.textContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    flex: 1;
+}
+
+.infoBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(1.5rem, 2.09vw, 2.5rem);
+    width: 100%;
+}
+
+.brandsBlock {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem;
+    margin-top: auto;
+}
+
+.brandsHeader {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.brandsTitle {
+    font-size: var(--fs-tag);
+    font-weight: var(--fw-titleCard);
+    color: var(--col-txtSec);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.divider {
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--col-txtSec);
+    opacity: 0.5;
+}
+
+/* ==================== TYPOGRAPHY ==================== */
+.title {
+    font-size: var(--fs-h2);
+    line-height: var(--lh-title);
+    font-weight: var(--fw-title);
+    font-variation-settings: var(--fv-title);
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.highlight {
+    color: var(--col-accent);
+    display: block;
+}
+
+.description {
+    font-size: var(--fs-body);
+    line-height: var(--lh-textL);
+    color: var(--col-secondary);
+    margin: 0;
+    max-width: 600px;
+}
+
+/* ==================== BUTTONS ==================== */
+.buttonContainer {
+    display: flex;
+    gap: clamp(1rem, 1.6vw, 2rem);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1300px) {
+    .container {
+        padding-inline: 2rem;
+    }
+}
+
+@media (max-width: 1050px) {
+    .imageContainer {
+        display: none;
+    }
+
+    .contentWrapper {
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 430px) {
+    .buttonContainer {
+        flex-direction: column;
+        width: 100%;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 390px) {
+    .container {
+        padding-inline: 1rem;
+    }
+}
+
+
+/*
+MODIFICAR AL FINAL
+- Eliminar media queries innecesarios al final (900px, 501px vacíos removidos)
+*/

@@ -105,10 +105,12 @@ html.lenis, html.lenis body {
 
 
 /* ----------- FONT WEIGHTS ----------- */
+    --fw-description:   200;
     --fw-subtitle:      300;
     --fw-h4:            400;
     --fw-links:         500;
     --fw-titleCard:     600;
+    --fw-title:         700;
     --fw-heroTitle:     800;
 
 /* ----------- FONT VARIATIONS ----------- */
