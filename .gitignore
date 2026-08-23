@@ -23,5 +23,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-src/assets/*
-!src/assets/.gitkeep
+src/assets/**
+!src/assets/**/
+!src/assets/**/.gitkeep
