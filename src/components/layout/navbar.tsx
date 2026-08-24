@@ -1,6 +1,7 @@
 // BIBLIOTECAS EXTERNAS
 import { useEffect, useState, useCallback } from 'react';
-import { BsPinMapFill, BsFillClockFill, BsChevronDown } from "react-icons/bs";
+import { Icon } from '@iconify/react';
+import { ICONS } from '../../icons/icons';
 import { Squash as Hamburger } from 'hamburger-react';
 
 // HOOKS
@@ -91,7 +92,7 @@ const Navbar = () => {
                 <div className={styles.topNav}>
                     <div className={styles.topNavInner}>
                         <div className={styles.topNavItem}>
-                            <BsFillClockFill />
+                            <Icon icon={ICONS.clock} />
                             <span>Lunes - Sábado | 08:00 - 18:00</span>
                         </div>
                         <div className={styles.topNavItem}>
@@ -100,7 +101,7 @@ const Navbar = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <BsPinMapFill />
+                                <Icon icon={ICONS.mapPin} />
                                 Av. Carlos Izaguirre Mza. B Lote. 05 15109 - SMP
                             </a>
                         </div>
@@ -205,7 +206,7 @@ const Navbar = () => {
                             onClick={() => toggleAccordion('servicios')}
                         >
                             <span>Servicios</span>
-                            <BsChevronDown className={styles.accordionIcon} />
+                            <Icon icon={ICONS.arrowDown} className={styles.accordionIcon} />
                         </button>
                         <div className={`${styles.accordionContent} ${openAccordion === 'servicios' ? styles.open : ''}`}>
                             {navData.servicios.items.map((item, index) => (
@@ -223,7 +224,7 @@ const Navbar = () => {
                             onClick={() => toggleAccordion('productos')}
                         >
                             <span>Productos</span>
-                            <BsChevronDown className={styles.accordionIcon} />
+                            <Icon icon={ICONS.arrowDown} className={styles.accordionIcon} />
                         </button>
                         <div className={`${styles.accordionContent} ${openAccordion === 'productos' ? styles.open : ''}`}>
                             {navData.productos.items.map((item, index) => (
@@ -241,7 +242,7 @@ const Navbar = () => {
                             onClick={() => toggleAccordion('nosotros')}
                         >
                             <span>Nosotros</span>
-                            <BsChevronDown className={styles.accordionIcon} />
+                            <Icon icon={ICONS.arrowDown} className={styles.accordionIcon} />
                         </button>
                         <div className={`${styles.accordionContent} ${openAccordion === 'nosotros' ? styles.open : ''}`}>
                             {navData.nosotros.items.map((item, index) => (

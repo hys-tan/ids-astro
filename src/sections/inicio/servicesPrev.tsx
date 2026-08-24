@@ -1,6 +1,7 @@
 // BIBLIOTECAS EXTERNAS
 import { useRef, useEffect } from 'react';
-import { IoArrowForward } from 'react-icons/io5';
+import { Icon } from '@iconify/react';
+import { ICONS } from '../../icons/icons';
 
 // ESTILOS
 import styles from './servicesPrev.module.css';
@@ -86,7 +87,7 @@ const ServicesPrev = () => {
                         {/* Content */}
                         <div className={styles.cardContent}>
                             {/* Icon */}
-                            <servicio.icon className={styles.cardIcon} />
+                            <Icon icon={servicio.icon} className={styles.cardIcon} />
 
                             {/* Title */}
                             <h3 className={styles.cardTitle}>
@@ -102,7 +103,7 @@ const ServicesPrev = () => {
                             {/* CTA - Solo este es clickeable */}
                             <a href={servicio.link} className={styles.cardCta}>
                                 VER DETALLES
-                                <IoArrowForward className={styles.ctaArrow} />
+                                <Icon icon={ICONS.arrowRight} className={styles.ctaArrow} />
                             </a>
                         </div>
                     </div>

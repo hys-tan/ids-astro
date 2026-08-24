@@ -1,0 +1,92 @@
+---
+import { Icon } from 'astro-icon/components';
+import { ICONS } from '../../icons/icons';
+import { Image } from 'astro:assets';
+
+import Button from '../../components/common/button';
+import styles from './ventasPrev.module.css';
+
+import productImage from '../../assets/prueba.webp';
+
+const VENTAS_TEXTS = {
+    title: {
+        normal: "VENTA Y ALQUILER DE ",
+        highlight: "GRUPOS ELECTRÓGENOS"
+    },
+    description: "Contamos con una amplia flota de equipos para entrega inmediata, desde 10kVA hasta 2500kVA. Soluciones adaptadas para minería, construcción y eventos de gran escala.",
+    buttons: {
+        primary: { text: "VER CATÁLOGO DE VENTA", href: "#" },
+        secondary: { text: "VER CATÁLOGO DE ALQUILER", href: "#" }
+    }
+};
+
+const BRANDS = [
+    "Caterpillar",
+    "Cummins",
+    "Honda",
+    "Yanmar",
+    "Perkins",
+    "Volvo Penta",
+    "Develon / Doosan"
+];
+---
+
+<section class={styles.container}>
+    <div class={styles.mainContent}>
+        {/* Lado Izquierdo: Imagen */}
+        <div class={styles.imageContainer}>
+            <Image
+                src={productImage}
+                alt="Grupo Electrógeno"
+                class={styles.productImage}
+                loading="lazy"
+                decoding="async"
+                width={650}
+                height={560}
+            />
+        </div>
+
+        {/* Lado Derecho: Contenido */}
+        <div class={styles.textContainer}>
+            <div class={styles.contentWrapper}>
+                {/* Bloque de Información Superior */}
+                <div class={styles.infoBlock}>
+                    <h2 class={styles.title}>
+                        {VENTAS_TEXTS.title.normal}
+                        <span class={styles.highlight}>{VENTAS_TEXTS.title.highlight}</span>
+                    </h2>
+
+                    <p class={styles.description}>
+                        {VENTAS_TEXTS.description}
+                    </p>
+
+                    <div class={styles.buttonContainer}>
+                        <Button variant="primary" href={VENTAS_TEXTS.buttons.primary.href}>
+                            {VENTAS_TEXTS.buttons.primary.text}
+                        </Button>
+                        <Button variant="secondary" href={VENTAS_TEXTS.buttons.secondary.href}>
+                            {VENTAS_TEXTS.buttons.secondary.text}
+                        </Button>
+                    </div>
+                </div>
+
+                {/* Bloque de Marcas Inferior */}
+                <div class={styles.brandsBlock}>
+                    <div class={styles.brandsHeader}>
+                        <span class={styles.brandsTitle}>MARCAS DISPONIBLES</span>
+                        <div class={styles.divider}></div>
+                    </div>
+
+                    <div class={styles.brandsGrid}>
+                        {BRANDS.map((brand) => (
+                            <div class={styles.brandTextItem}>
+                                <Icon name={ICONS.check} class={styles.brandTextIcon} />
+                                <span>{brand}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

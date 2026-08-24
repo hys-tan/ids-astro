@@ -133,8 +133,8 @@
 .cardCta {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: var(--fs-topNav);
+    gap: 1.5rem;
+    font-size: var(--fs-p);
     font-weight: var(--fw-titleCard);
     color: var(--col-accent);
     text-transform: uppercase;
@@ -143,7 +143,7 @@
 }
 
 .ctaArrow {
-    font-size: 1em;
+    font-size: var(--fs-p);
     transition: transform 0.3s ease;
 }
 

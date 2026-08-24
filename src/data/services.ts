@@ -3,7 +3,7 @@
 // Reutilizable en: ServicesPrev, página de Servicios, Footer, etc.
 
 // ICONOS
-import { MdManageAccounts, MdSettings, MdConstruction } from 'react-icons/md';
+import { ICONS } from '../icons/icons';
 
 // ASSETS
 import imgMantenimiento from '../assets/img6.webp';
@@ -13,7 +13,7 @@ import imgInstalacion from '../assets/img7.webp';
 export const serviciosData = [
     {
         id: 1,
-        icon: MdManageAccounts,
+        icon: ICONS.personGear,
         title: 'MANTENIMIENTO',
         subtitle: 'PREVENTIVO Y PREDICTIVO',
         description: 'Programas de mantenimiento para grupos electrógenos, motores eléctricos, bombas de agua y sistemas HVAC.',
@@ -22,7 +22,7 @@ export const serviciosData = [
     },
     {
         id: 2,
-        icon: MdSettings,
+        icon: ICONS.settings,
         title: 'REPARACIÓN',
         subtitle: 'CORRECTIVA',
         description: 'Diagnóstico avanzado y reparación de emergencia para motores industriales y generadores.',
@@ -31,7 +31,7 @@ export const serviciosData = [
     },
     {
         id: 3,
-        icon: MdConstruction,
+        icon: ICONS.tool,
         title: 'INSTALACIÓN',
         subtitle: 'Y MONTAJE',
         description: 'Diseño, fabricación e instalación de tableros TTA, pozos a tierra y sistemas de respaldo.',
