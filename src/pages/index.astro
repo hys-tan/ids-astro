@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HomePage from '../sections/inicio/homePage';
+import HomePage from '../sections/inicio/homePage.astro';
 import ServicesPrev from '../sections/inicio/servicesPrev';
 import VentasPrev from '../sections/inicio/ventasPrev.astro';
 ---
 
 <BaseLayout title="Idelsi Soluciones | Inicio">
 	<main>
-		<HomePage client:load />
+		<HomePage />
 
 		<ServicesPrev client:load />
 

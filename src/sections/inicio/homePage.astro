@@ -1,0 +1,37 @@
+---
+import styles from './homePage.module.css';
+import Button from '../../components/common/button';
+---
+
+<section class={styles.heroContainer}>
+    {/* Imagen de fondo decorativa */}
+    <div class={styles.backgroundImage}></div>
+
+    {/* Contenido del Hero */}
+    <div class={styles.contentWrapper}>
+        {/* Badge */}
+        <span class={styles.badge}>EXPERTOS EN ENERGÍA</span>
+
+        {/* Título principal */}
+        <h1 class={styles.title}>
+            POTENCIA ININTERRUMPIDA
+            <span class={styles.titleAccent}> PARA TU INDUSTRIA</span>
+        </h1>
+
+        {/* Descripción */}
+        <p class={styles.description}>
+            Suministramos soluciones integrales en grupos electrógenos, mantenimiento preventivo y repuestos originales para garantizar la continuidad de sus operaciones.
+        </p>
+
+        {/* Botones CTA */}
+        <div class={styles.ctaContainer}>
+            <Button variant='primary' href="#servicios">
+                EXPLORAR SOLUCIONES
+            </Button>
+
+            <Button variant='secondary' href="#">
+                QUIÉNES SOMOS
+            </Button>
+        </div>
+    </div>
+</section>
