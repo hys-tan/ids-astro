@@ -1,14 +1,33 @@
 import styles from './ventasPrev.module.css';
-import { useReducedMotion } from '../../hooks/useReducedMotion';
 import Button from '../../components/common/button';
-import LogoCarousel from '../../components/ui/logoCarousel';
+import { BsPatchCheckFill } from 'react-icons/bs';
 
 import productImage from '../../assets/prueba.webp';
-import { BRAND_LOGOS, VENTAS_TEXTS } from '../../data/ventas';
+
+// Datos de la sección directamente en el archivo
+const VENTAS_TEXTS = {
+    title: {
+        normal: "VENTA Y ALQUILER DE ",
+        highlight: "GRUPOS ELECTRÓGENOS"
+    },
+    description: "Contamos con una amplia flota de equipos para entrega inmediata, desde 10kVA hasta 2500kVA. Soluciones adaptadas para minería, construcción y eventos de gran escala.",
+    buttons: {
+        primary: { text: "VER CATÁLOGO DE VENTA", href: "#" },
+        secondary: { text: "VER CATÁLOGO DE ALQUILER", href: "#" }
+    }
+};
+
+const BRANDS = [
+    "Caterpillar",
+    "Cummins",
+    "Honda",
+    "Yanmar",
+    "Perkins",
+    "Volvo Penta",
+    "Develon / Doosan"
+];
 
 const VentasPrev = () => {
-    const isAnimated = useReducedMotion();
-
     return (
         <section className={styles.container}>
             <div className={styles.mainContent}>
@@ -56,7 +75,14 @@ const VentasPrev = () => {
                                 <div className={styles.divider}></div>
                             </div>
 
-                            <LogoCarousel logos={BRAND_LOGOS} isAnimated={isAnimated} />
+                            <div className={styles.brandsGrid}>
+                                {BRANDS.map((brand, index) => (
+                                    <div key={index} className={styles.brandTextItem}>
+                                        <BsPatchCheckFill className={styles.brandTextIcon} />
+                                        <span>{brand}</span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>

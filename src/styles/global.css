@@ -141,8 +141,11 @@ html.lenis, html.lenis body {
 
 
 /* ----------- LINE HEIGHTS ----------- */
-    --lh-item:        1.5;
-    --lh-textL:       1.7;
+    --lh-hero:          1.3;
+    --lh-title:         1.4;
+    --lh-item:          1.5;
+    --lh-desc:          1.6;
+    --lh-textL:         1.7;
 
 
 /* ----------- GRADIENTS ----------- */

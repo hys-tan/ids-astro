@@ -250,7 +250,7 @@
     font-size: var(--fs-p);
     color: var(--col-secondary);
     text-decoration: none;
-    padding: 0;        /* 0.8rem 0 */
+    padding: 0.8rem 0;
     font-variation-settings: var(--fv-nav);
 }
 
