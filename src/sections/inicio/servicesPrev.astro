@@ -1,0 +1,115 @@
+---
+import { Icon } from 'astro-icon/components';
+import { ICONS } from '../../icons/icons';
+import styles from './servicesPrev.module.css';
+import { serviciosData } from '../../data/services';
+import { Image } from 'astro:assets';
+---
+
+<section id="servicios" class={styles.servicesContainer}>
+    {/* Hidden h2 for accessibility */}
+    <h2 class={styles.visuallyHidden}>Nuestros Servicios</h2>
+
+    {/* Cards Grid */}
+    <div class={styles.cardsGrid} data-services-grid>
+        {serviciosData.map((servicio) => (
+            <div class={styles.card} data-service-card>
+                {/* Background Image */}
+                <Image
+                    src={servicio.image}
+                    alt={servicio.title}
+                    class={styles.cardImage}
+                    loading="lazy"
+                    decoding="async"
+                    width={650}
+                    height={920}
+                />
+
+                {/* Overlay */}
+                <div class={styles.cardOverlay}></div>
+
+                {/* Content */}
+                <div class={styles.cardContent}>
+                    {/* Icon */}
+                    <Icon name={servicio.icon} class={styles.cardIcon} />
+
+                    {/* Title */}
+                    <h3 class={styles.cardTitle}>
+                        {servicio.title}
+                        <span class={styles.cardSubtitle}>{servicio.subtitle}</span>
+                    </h3>
+
+                    {/* Description (hidden by default, shows on hover) */}
+                    <p class={styles.cardDescription}>
+                        {servicio.description}
+                    </p>
+
+                    {/* CTA - Solo este es clickeable */}
+                    <a href={servicio.link} class={styles.cardCta}>
+                        VER DETALLES
+                        <Icon name={ICONS.arrowUpRight} class={styles.ctaArrow} />
+                    </a>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<script>
+    const INITIAL_SCALE = 0.8;
+    const FINAL_SCALE = 1.0;
+    
+    // Guardamos la referencia a la funcin para poder removerla despus
+    let onScrollHandler: (() => void) | null = null;
+
+    const setupServicesAnimation = () => {
+        const grid = document.querySelector<HTMLDivElement>('[data-services-grid]');
+        const cards = document.querySelectorAll<HTMLElement>('[data-service-card]');
+
+        if (grid && cards.length > 0) {
+            let ticking = false;
+
+            const calculateCardScales = () => {
+                const windowHeight = window.innerHeight;
+                const rect = grid.getBoundingClientRect();
+
+                let progress = (windowHeight - rect.top) / windowHeight;
+                progress = Math.max(0, Math.min(1, progress));
+
+                const newScale = INITIAL_SCALE + (progress * (FINAL_SCALE - INITIAL_SCALE));
+
+                cards.forEach((card) => {
+                    card.style.transform = `scale(${newScale})`;
+                });
+            };
+
+            // Escala inicial
+            calculateCardScales();
+
+            onScrollHandler = () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        calculateCardScales();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            };
+
+            window.addEventListener('resize', onScrollHandler, { passive: true });
+            window.addEventListener('scroll', onScrollHandler, { passive: true });
+        }
+    };
+
+    // Ejecutar al cargar la pgina (Soporta View Transitions)
+    document.addEventListener('astro:page-load', setupServicesAnimation);
+
+    // Limpiar los EventListeners cuando salimos de la pgina para evitar Memory Leaks
+    document.addEventListener('astro:before-swap', () => {
+        if (onScrollHandler) {
+            window.removeEventListener('resize', onScrollHandler);
+            window.removeEventListener('scroll', onScrollHandler);
+            onScrollHandler = null; // Reset
+        }
+    });
+</script>

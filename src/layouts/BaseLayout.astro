@@ -2,6 +2,7 @@
 import '@fontsource-variable/archivo/wdth.css';
 import '../styles/global.css';
 import Navbar from '../components/layout/navbar';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
 	title: string;
@@ -39,6 +40,7 @@ const {
 		<meta name="generator" content={Astro.generator} />
 		
 		<!-- SEO Básico -->
+		<ClientRouter />
 		<title>{title}</title>
 		<meta name="description" content={description} />
 	</head>
@@ -53,33 +55,51 @@ const {
 		<script>
 			import Lenis from 'lenis';
 			
-			// Solo ejecutamos esto en el navegador
-			if (typeof window !== 'undefined') {
-				window.lenis = new Lenis({
-					autoRaf: true,
-					lerp: 0.08,
-					wheelMultiplier: 1.2
-				});
+            const initLenis = () => {
+                if (typeof window !== 'undefined') {
+                    // @ts-ignore
+                    window.lenis = new Lenis({
+                        autoRaf: true,
+                        lerp: 0.05,             // 0.08
+                        wheelMultiplier: 1.5    // 1.2
+                    });
 
-				// Interceptar enlaces con hash para Smooth Scroll sin modificar la URL
-				document.body.addEventListener('click', (e) => {
-					// @ts-ignore
-					const target = e.target.closest('a[href^="#"]');
-					if (target) {
-						const href = target.getAttribute('href');
-						if (href === '#') return;
-						
-						const targetElement = document.querySelector(href);
-						if (targetElement && window.lenis) {
-							e.preventDefault(); // Evitar salto instantáneo y adición del hash a la URL
-							window.lenis.scrollTo(targetElement, {
-								offset: 0,
-								duration: 1.2
-							});
-						}
-					}
-				});
-			}
+                    // Interceptar enlaces con hash para Smooth Scroll sin modificar la URL
+                    document.body.addEventListener('click', (e) => {
+                        // @ts-ignore
+                        const target = (e.target as HTMLElement).closest('a[href^="#"]');
+                        if (target) {
+                            const href = target.getAttribute('href');
+                            if (href === '#') return;
+                            
+                            const targetElement = document.querySelector(href || '');
+                            // @ts-ignore
+                            if (targetElement && window.lenis) {
+                                e.preventDefault(); // Evitar salto instantáneo y adición del hash a la URL
+                                // @ts-ignore
+                                window.lenis.scrollTo(targetElement, {
+                                    offset: 0,
+                                    duration: 1.2
+                                });
+                            }
+                        }
+                    });
+                }
+            };
+
+            // Ejecutar al cargar la página o al navegar
+            document.addEventListener('astro:page-load', initLenis);
+
+            // Limpiar la instancia de Lenis al cambiar de página
+            document.addEventListener('astro:before-swap', () => {
+                // @ts-ignore
+                if (window.lenis) {
+                    // @ts-ignore
+                    window.lenis.destroy();
+                    // @ts-ignore
+                    window.lenis = null;
+                }
+            });
 		</script>
 	</body>
 
