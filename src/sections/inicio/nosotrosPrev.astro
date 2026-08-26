@@ -1,0 +1,68 @@
+---
+import styles from './nosotrosPrev.module.css';
+import Button from '../../components/common/button';
+import { Image } from 'astro:assets';
+import imgNosotros from '../../assets/prueba.webp';
+---
+
+<section class={styles.container}>
+    <div class={styles.mainContent}>
+        {/* Lado Izquierdo: Información */}
+        <div class={styles.infoSide}>
+            <span class={styles.badge}>NUESTRA EMPRESA</span>
+
+            <h2 class={styles.title}>QUIÉNES SOMOS</h2>
+
+            <p class={styles.description}>
+                Somos una empresa líder en el sector energético industrial, dedicada a proveer
+                soluciones de respaldo de alta confiabilidad. Nuestra trayectoria nos avala
+                como el socio estratégico preferido por las grandes industrias.
+            </p>
+
+            <div class={styles.statsContainer}>
+                <div class={styles.statItem}>
+                    <div class={styles.statLine}></div>
+                    <div class={styles.statContent}>
+                        <span class={styles.statNumber}>24/7</span>
+                        <span class={styles.statLabel}>SOPORTE TÉCNICO</span>
+                    </div>
+                </div>
+                <div class={styles.statItem}>
+                    <div class={styles.statLine}></div>
+                    <div class={styles.statContent}>
+                        <span class={styles.statNumber}>7+</span>
+                        <span class={styles.statLabel}>MARCAS RESPALDADAS</span>
+                    </div>
+                </div>
+            </div>
+
+            <Button variant='primary' href="#" className={styles.ctaButton}>
+                CONOCER MAS
+            </Button>
+        </div>
+
+        {/* Lado Derecho: Imagen */}
+        <div class={styles.imageSide}>
+            <div class={styles.imageWrapper}>
+                <Image
+                    src={imgNosotros}
+                    alt="Nosotros - Maquinaria"
+                    class={styles.mainImage}
+                    loading="lazy"
+                    decoding="async"
+                    width={700}
+                    height={550}
+                />
+
+                {/* Overlay Card - Años de experiencia */}
+                <div class={styles.experienceCard}>
+                    <span class={styles.expNumber}>5+</span>
+                    <p class={styles.expText}>
+                        AÑOS DE EXPERIENCIA <br />
+                        EN EL SECTOR
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

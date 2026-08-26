@@ -1,0 +1,184 @@
+/* ==================== CONTAINER ==================== */
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-inline: 7rem;
+    padding-block: 2rem;
+}
+
+.mainContent {
+    display: flex;
+    width: 100%;
+    max-width: 98.5rem;
+    margin: 0 auto;
+    gap: clamp(1.5rem, 2.09vw, 2.5rem);
+}
+
+/* ==================== INFO SIDE (LEFT) ==================== */
+.infoSide {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: clamp(1.5rem, 2.09vw, 2.5rem);
+    min-width: 0;
+}
+
+.badge {
+    font-size: var(--fs-span);
+    font-weight: var(--fw-titleCard);
+    color: var(--col-accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.title {
+    font-size: var(--fs-h2);
+    line-height: var(--lh-title);
+    font-weight: var(--fw-title);
+    font-variation-settings: var(--fv-title);
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.description {
+    font-size: var(--fs-p);
+    line-height: var(--lh-textL);
+    max-width: 510px;
+    margin: 0;
+}
+
+/* ---------- STATS ---------- */
+.statsContainer {
+    display: flex;
+    gap: clamp(1.5rem, 3.3vw, 4rem);
+}
+
+.statItem {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 1.25vw, 1.5rem);
+}
+
+.statLine {
+    width: 5px;
+    height: 100%;
+    background-color: var(--col-accent);
+}
+
+.statContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.statNumber {
+    font-size: var(--fs-h3);
+    margin-bottom: 0.5rem;
+    font-weight: var(--fw-title);
+}
+
+.statLabel {
+    font-size: var(--fs-span);
+    font-weight: var(--fw-links);
+    color: var(--col-hovNav);
+    line-height: var(--lh-hero);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* ==================== IMAGE SIDE (RIGHT) ==================== */
+.imageSide {
+    width: 45%;
+    height: clamp(450px, 28.7vw, 550px);
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+    position: relative;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.mainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 1;
+    border: 1px solid var(--col-icon);
+    border-radius: 8px;
+    opacity: 0.85;
+}
+
+/* ---------- EXPERIENCE CARD ---------- */
+.experienceCard {
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    background-color: var(--col-secondary);
+    color: var(--col-primary);
+    padding: 1.5rem;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 200px;
+    border-radius: 8px;
+
+    display: none;
+}
+
+.expNumber {
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-title);
+    margin-bottom: 0.5rem;
+}
+
+.expText {
+    font-size: var(--fs-small);
+    font-weight: var(--fw-description);
+    line-height: var(--lh-hero);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+
+@media (max-width: 1300px) {
+    .container {
+        padding-inline: 2rem;
+    }
+}
+
+@media (max-width: 1050px) {
+    .imageSide {
+        display: none;
+    }
+
+    .description {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 491px) {
+    .statsContainer {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 430px) {
+    .ctaButton {
+        width: 100%;
+    }
+}
+
+@media (max-width: 390px) {
+    .container {
+        padding-inline: 1rem;
+    }
+}
