@@ -1,0 +1,135 @@
+.container {
+    padding: 2rem 7rem;
+    background-color: var(--col-primary);
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background-color: var(--col-wha2);
+    width: 100%;
+    max-width: 98.5rem;
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(2rem, 2.5vw, 3rem);
+    box-shadow: 0px 0px 15px var(--col-shadow);
+    border-radius: 8px;
+    border: 1px solid var(--col-bordCard2);
+    transition: border-color .3s ease;
+}
+
+.card:hover {
+    border: 1px solid var(--col-icon);
+}
+
+.textContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1rem, 1.7vw, 2rem);
+}
+
+.title {
+    font-size: var(--fs-h2);
+    line-height: var(--lh-title);
+    font-weight: var(--fw-title);
+    font-variation-settings: var(--fv-title);
+    margin: 0;
+    text-transform: uppercase;
+    color: var(--col-secondary);
+}
+
+.description {
+    font-size: var(--fs-p);
+    line-height: var(--lh-textL);
+    color: var(--col-txtSec);
+    margin: 0;
+    max-width: 90%;
+    transition: 0.3s ease;
+}
+
+.card:hover .description {
+    color: var(--col-secondary);
+}
+
+/* Action Area (Right Side) */
+.actionContent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* ==================== BUTTON CTA ==================== */
+.ctaBtn {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--col-secondary);
+    font-size: var(--fs-p);
+    font-weight: var(--fw-links);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.ctaBtn span {
+    letter-spacing: 2px;
+}
+
+.ctaIcon {
+    display: block;
+    font-size: var(--fs-h4);
+    transition: transform 0.3s ease;
+}
+
+.ctaBtn:hover .ctaIcon {
+    transform: translateX(0.5rem);
+}
+
+.ctaBtn:active {
+    transform: scale(0.97);
+}
+
+@media (max-width: 1300px) {
+    .container {
+        padding-inline: 2rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .description {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 930px) {
+    .description {
+        max-width: 100%;
+    }
+
+    .card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2.5rem;
+        padding: 2rem;
+    }
+
+    .actionContent {
+        width: 100%;
+        align-items: flex-start;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 390px) {
+    .container {
+        padding-inline: 1rem;
+    }
+}

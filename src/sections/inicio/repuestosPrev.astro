@@ -1,0 +1,24 @@
+---
+import { Icon } from 'astro-icon/components';
+import { ICONS } from '../../icons/icons';
+import styles from './repuestosPrev.module.css';
+---
+
+<section class={styles.container}>
+    <div class={styles.card}>
+        <div class={styles.textContent}>
+            <h2 class={styles.title}>REPUESTOS ORIGINALES</h2>
+            <p class={styles.description}>
+                Garantizamos la vida útil de sus equipos con componentes certificados.
+                Stock permanente de filtros, correas, sensores y módulos de control para todas las marcas líderes del mercado internacional.
+            </p>
+        </div>
+
+        <div class={styles.actionContent}>
+            <a href="/catalogo" class={styles.ctaBtn}>
+                <span>VER CATÁLOGO</span>
+                <Icon name={ICONS.arrowRight} class={styles.ctaIcon} />
+            </a>
+        </div>
+    </div>
+</section>

@@ -135,11 +135,12 @@
     align-items: center;
     gap: 1.5rem;
     font-size: var(--fs-p);
-    font-weight: var(--fw-titleCard);
+    font-weight: var(--fw-links );
     color: var(--col-accent);
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
+    letter-spacing: 2px;
 }
 
 .ctaArrow {
