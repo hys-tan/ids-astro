@@ -141,7 +141,7 @@
 }
 
 .expText {
-    font-size: var(--fs-small);
+    font-size: var(--fs-span);
     font-weight: var(--fw-description);
     line-height: var(--lh-hero);
     text-transform: uppercase;
