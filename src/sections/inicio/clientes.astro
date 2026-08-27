@@ -1,0 +1,50 @@
+---
+import styles from './clientes.module.css';
+
+// Importación de logos SVG
+import aapLogo from '../../assets/brands/aap.svg';
+import frioaLogo from '../../assets/brands/frioa.svg';
+import proquinsaLogo from '../../assets/brands/proquinsa.svg';
+import binswangerLogo from '../../assets/brands/binswanger.svg';
+import confianzaLogo from '../../assets/brands/fconfianza.svg';
+import delosiLogo from '../../assets/brands/delosi.svg';
+
+const CLIENT_LOGOS = [
+    { file: aapLogo, name: 'Asociación Automotriz del Perú' },
+    { file: frioaLogo, name: 'Frio Aéreo' },
+    { file: proquinsaLogo, name: 'Proquinsa' },
+    { file: binswangerLogo, name: 'Binswanger' },
+    { file: confianzaLogo, name: 'Financiera Confianza' },
+    { file: delosiLogo, name: 'Delosi' }
+];
+
+// Triplicamos la lista en el servidor para garantizar el bucle infinito perfecto de 33.333%
+const ALL_LOGOS = [...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS];
+---
+
+<section class={styles.clientesContainer}>
+    <div class={styles.container}>
+        <h2 class={styles.title}>Respaldan Nuestra Calidad</h2>
+
+        <div class={styles.scroller} data-animated="true">
+            <ul class={styles.scrollerInner}>
+                {ALL_LOGOS.map((logo, index) => (
+                    <li 
+                        class={styles.logoItem} 
+                        aria-hidden={index >= CLIENT_LOGOS.length ? "true" : undefined}
+                    >
+                        <img
+                            src={logo.file.src}
+                            alt={`Logo de ${logo.name}`}
+                            class={styles.logoImage}
+                            loading="lazy"
+                            decoding="async"
+                            width="150"
+                            height="65"
+                        />
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </div>
+</section>

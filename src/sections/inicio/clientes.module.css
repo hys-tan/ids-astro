@@ -1,0 +1,120 @@
+.clientesContainer {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 7rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 98.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: clamp(2rem, 2.5vw, 3rem);
+}
+
+.title {
+    font-size: var(--fs-strong);
+    font-weight: var(--fw-title);
+    font-variation-settings: var(--fv-title);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Scroller Container */
+.scroller {
+    max-width: 100%;
+}
+
+.scrollerInner {
+    padding-block: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(2rem, 5vw, 4rem);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Estado Animado */
+.scroller[data-animated="true"] {
+    overflow: hidden;
+    -webkit-mask: linear-gradient(90deg,
+            transparent,
+            white 20%,
+            white 80%,
+            transparent);
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller[data-animated="true"] .scrollerInner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll var(--_animation-duration, 30s) var(--_animation-direction, forwards) linear infinite;
+}
+
+/* Pausar animación SOLO si el mouse está sobre un logoItem */
+.scrollerInner:has(.logoItem:hover) {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    to {
+        transform: translate(calc(-33.3333% - (clamp(2rem, 5vw, 4rem) / 3)));
+    }
+}
+
+/* Item individual del logo */
+.logoItem {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--col-primary);
+    padding-block: 0.5rem;
+    padding-inline: 0.5rem;
+}
+
+/* Imagen del logo */
+.logoImage {
+    width: auto;
+    max-width: 100%;
+    height: clamp(30px, 2.09vw, 40px);
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: filter 0.5s ease, opacity 0.3s ease;
+}
+
+.logoItem:hover .logoImage {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* Accesibilidad nativa en CSS para movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .scroller[data-animated="true"] .scrollerInner {
+        animation: none !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+}
+
+/* Versión móvil */
+@media (max-width: 1300px) {
+    .clientesContainer {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 390px) {
+    .clientesContainer {
+        padding-inline: 1rem;
+    }
+}
