@@ -20,6 +20,9 @@ importers:
       '@iconify-json/bi':
         specifier: ^1.2.7
         version: 1.2.7
+      '@iconify-json/bxl':
+        specifier: ^1.2.4
+        version: 1.2.4
       '@iconify/react':
         specifier: ^6.0.2
         version: 6.0.2(react@19.2.8)
@@ -464,6 +467,9 @@ packages:
 
   '@iconify-json/bi@1.2.7':
     resolution: {integrity: sha512-IPz8WNxmLkH1I9msl+0Q4OnmjjvP4uU0Z61a4i4sqonB6vKSbMGUWuGn8/YuuszlReVj8rf+3gNv5JU8Xoljyg==}
+
+  '@iconify-json/bxl@1.2.4':
+    resolution: {integrity: sha512-R6gVQSxB1+XeVClK7KdACnk1SfP8xiAu6LHuKZmp6Ro5zwMQbpe9vFBv30F6eHMDL8lZ7eXuac5SRJ9C8DKehQ==}
 
   '@iconify/react@6.0.2':
     resolution: {integrity: sha512-SMmC2sactfpJD427WJEDN6PMyznTFMhByK9yLW0gOTtnjzzbsi/Ke/XqsumsavFPwNiXs8jSiYeZTmLCLwO+Fg==}
@@ -2089,6 +2095,10 @@ snapshots:
   '@fontsource-variable/cormorant-garamond@5.3.0': {}
 
   '@iconify-json/bi@1.2.7':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/bxl@1.2.4':
     dependencies:
       '@iconify/types': 2.0.0
 

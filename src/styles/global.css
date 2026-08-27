@@ -15,7 +15,7 @@ html {
 }
 
 body {
-    font-family: 'Archivo Variable', sans-serif;
+    font-family: var(--ff-principal);
     color: var(--col-secondary);
     background-color: var(--col-primary);
     font-weight: var(--fw-subtitle);
@@ -138,6 +138,7 @@ html.lenis, html.lenis body {
     --fs-h2:            clamp(1.5rem,       1.255rem + 1.091vw,     3rem);
     --fs-h3:            clamp(1.125rem,     0.941rem + 0.818vw,     2.25rem);
     --fs-h4:            clamp(1rem,         0.877rem + 0.545vw,     1.75rem);
+    --fs-h5:            clamp(1rem,         0.951rem + 0.218vw,     1.3rem);
     --fs-p:             clamp(0.9375rem,    0.912rem + 0.127vw,     1.125rem);
     --fs-span:          clamp(0.875rem,     0.855rem + 0.091vw,     1rem);
     --fs-strong:        clamp(1rem,         0.98rem + 0.091vw,      1.125rem);
@@ -155,7 +156,8 @@ html.lenis, html.lenis body {
     --gradiente-right: 50%;
     --gradiente-top:   30%;
 
-
+/* ----------- FONT FAMILY ----------- */
+    --ff-principal:     'Archivo Variable', sans-serif;
 }
 
 @media (max-width: 1300px) { :root { --gradiente-right: 60%; } }

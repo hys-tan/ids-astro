@@ -1,0 +1,81 @@
+---
+import { Icon } from 'astro-icon/components';
+import { ICONS } from '../../icons/icons';
+import styles from './footer.module.css';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class={styles.footer}>
+    <div class={styles.footerContent}>
+        {/* Columna 1: Acerca de */}
+        <div class={styles.column}>
+            <h4 class={styles.columnTitle}>Acerca de</h4>
+            <p class={styles.description}>
+                Somos especialistas en servicios técnicos integrales, ofreciendo mantenimiento
+                preventivo y correctivo de grupos electrógenos, tableros y motores eléctricos.
+                Brindamos soluciones confiables y soporte 24/7.
+            </p>
+        </div>
+
+        {/* Columna 2: Contáctanos */}
+        <div class={styles.column}>
+            <h4 class={styles.columnTitle}>Contáctanos</h4>
+            <div class={styles.contactList}>
+                <div class={styles.contactItem}>
+                    <a href="https://maps.app.goo.gl/o9mERAochVnBAPxMA" target="_blank" rel="noopener noreferrer">
+                        <Icon name={ICONS.mapPin} class={styles.icon} />
+                        Av. Carlos Izaguirre Mza. B Lote. 05 - San Martín de Porres, Lima
+                    </a>
+                </div>
+                <div class={styles.contactItem}>
+                    <a href="https://wa.me/51967599910" target="_blank" rel="noopener noreferrer">
+                        <Icon name={ICONS.phone} class={styles.icon} />
+                        967 599 910
+                    </a>
+                </div>
+                <div class={styles.contactItem}>
+                    <a href="mailto:ventas@idelsisoluciones.com">
+                        <Icon name={ICONS.mail} class={styles.icon} />
+                        ventas@idelsisoluciones.com
+                    </a>
+                </div>
+                <div class={styles.contactItem}>
+                    <Icon name={ICONS.clock} class={styles.icon} />
+                    <span>Lunes - Sábado | 08:00 - 18:00</span>
+                </div>
+            </div>
+        </div>
+
+        {/* Columna 3: Síguenos */}
+        <div class={styles.column}>
+            <h4 class={styles.columnTitle}>¡Síguenos!</h4>
+            <div class={styles.socialIcons}>
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class={styles.socialIcon} aria-label="Facebook">
+                    <Icon name={ICONS.facebook} />
+                </a>
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class={styles.socialIcon} aria-label="Instagram">
+                    <Icon name={ICONS.instagram} />
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class={styles.socialIcon} aria-label="LinkedIn">
+                    <Icon name={ICONS.linkedIn} />
+                </a>
+            </div>
+            <img
+                src="/logo.svg"
+                alt="Idelsi Soluciones Logo"
+                class={styles.footerLogo}
+                loading="lazy"
+                decoding="async"
+                width="715"
+                height="409"
+            />
+        </div>
+    </div>
+
+    {/* Copyright */}
+    <div class={styles.copyright}>
+        <div class={styles.divider}></div>
+        <p>© {currentYear} Idelsi Soluciones S.A.C. - Todos los derechos reservados.</p>
+    </div>
+</footer>

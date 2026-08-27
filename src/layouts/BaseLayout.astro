@@ -2,6 +2,7 @@
 import '@fontsource-variable/archivo/wdth.css';
 import '../styles/global.css';
 import Navbar from '../components/layout/navbar';
+import Footer from '../components/layout/footer.astro';
 import { ClientRouter } from 'astro:transitions';
 
 interface Props {
@@ -49,7 +50,7 @@ const {
 		
 		<slot /> <!-- Aquí va el contenido de cada página -->
 		
-		<!-- Aquí se inyecta el Footer en el futuro -->
+		<Footer />
 	
 		<!-- Script global de Lenis para Smooth Scroll -->
 		<script>
