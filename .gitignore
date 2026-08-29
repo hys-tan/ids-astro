@@ -26,3 +26,6 @@ pnpm-debug.log*
 src/assets/**
 !src/assets/**/
 !src/assets/**/.gitkeep
+
+# documentation / local notes
+DESIGN.md
