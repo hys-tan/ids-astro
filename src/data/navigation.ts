@@ -29,7 +29,7 @@ export const navData: NavData = {
     servicios: {
         title: 'Servicios',
         items: [
-            { label: 'Mantenimiento', link: '#' },
+            { label: 'Mantenimiento', link: '/mantenimiento' },
             { label: 'Reparación', link: '#' },
             { label: 'Instalación', link: '#' },
         ]

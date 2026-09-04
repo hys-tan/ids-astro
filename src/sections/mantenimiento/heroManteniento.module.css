@@ -1,0 +1,155 @@
+/* ==================== HERO SECTION ==================== */
+.heroSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==================== BANNER SUPERIOR (OSCURO) ==================== */
+.heroBanner {
+    width: 100%;
+    background: 
+        radial-gradient(circle at 90% 45%, rgba(244, 110, 52, 0.09) 0%, transparent 60%),
+        #17181A;
+    padding-top: 150px;
+    padding-bottom: 5.5rem;
+    padding-inline: 7rem;
+    display: flex;
+    justify-content: center;
+}
+
+.bannerContent {
+    width: 100%;
+    max-width: 98.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Título Principal */
+.mainTitle {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--ff-principal);
+    font-size: clamp(2.5rem, 4.2vw, 4.25rem);
+    font-weight: var(--fw-heroTitle);
+    font-variation-settings: var(--fv-titleS);
+    line-height: 1.12;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+}
+
+.titleWhite {
+    color: #FFFFFF;
+}
+
+.titleAccent {
+    color: var(--col-accent);
+}
+
+/* Descripción del Banner */
+.heroDescription {
+    margin: 0;
+    margin-top: 1.75rem;
+    max-width: 44rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-family: var(--ff-principal);
+    font-size: var(--fs-p);
+    font-weight: var(--fw-subtitle);
+    line-height: var(--lh-desc);
+}
+
+/* ==================== SECCIÓN DE IMPACTO (BLANCA) ==================== */
+.impactSection {
+    width: 100%;
+    background-color: #FFFFFF;
+    padding-block: 5.5rem;
+    padding-inline: 7rem;
+    display: flex;
+    justify-content: center;
+}
+
+.impactContent {
+    width: 100%;
+    max-width: 98.5rem;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 5rem;
+    align-items: start;
+}
+
+/* Columna Izquierda */
+.messageColumn {
+    display: flex;
+    flex-direction: column;
+    max-width: 36rem;
+}
+
+.impactTitle {
+    margin: 0;
+    color: var(--col-secondary);
+    font-family: var(--ff-principal);
+    font-size: clamp(2rem, 3vw, 3.15rem);
+    font-weight: var(--fw-heroTitle);
+    font-variation-settings: var(--fv-titleS);
+    line-height: 1.15;
+    text-transform: uppercase;
+}
+
+.titleHighlight {
+    color: var(--col-accent);
+}
+
+.impactDescription {
+    margin: 0;
+    margin-top: 2rem;
+    color: var(--col-txtSec);
+    font-family: var(--ff-principal);
+    font-size: var(--fs-p);
+    font-weight: var(--fw-subtitle);
+    line-height: var(--lh-desc);
+    max-width: 32rem;
+}
+
+/* Columna Derecha (Lista de Beneficios) */
+.featuresColumn {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.featuresList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.featureItem {
+    display: flex;
+    align-items: center;
+    gap: 1.15rem;
+    padding-block: 1.35rem;
+    border-bottom: 1px solid var(--col-bordCard2);
+}
+
+.squareBullet {
+    width: 8px;
+    height: 8px;
+    background-color: var(--col-accent);
+    flex-shrink: 0;
+}
+
+.featureText {
+    color: var(--col-secondary);
+    font-family: var(--ff-principal);
+    font-size: var(--fs-strong);
+    font-weight: var(--fw-title);
+    font-variation-settings: var(--fv-title);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+}

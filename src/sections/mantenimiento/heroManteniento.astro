@@ -1,0 +1,54 @@
+---
+import styles from './heroManteniento.module.css';
+
+const features = [
+    'CONTINUIDAD OPERATIVA',
+    'PREVENCIÓN DE FALLAS',
+    'VIDA ÚTIL EXTENDIDA',
+    'SEGURIDAD ELÉCTRICA',
+    'EFICIENCIA ENERGÉTICA'
+];
+---
+
+<section class={styles.heroSection}>
+    {/* Banner Superior Oscuro */}
+    <div class={styles.heroBanner}>
+        <div class={styles.bannerContent}>
+            <h1 class={styles.mainTitle}>
+                <span class={styles.titleWhite}>MANTENIMIENTO</span>
+                <span class={styles.titleAccent}>INDUSTRIAL ESPECIALIZADO</span>
+            </h1>
+
+            <p class={styles.heroDescription}>
+                Aseguramos la continuidad operativa con modalidades preventiva, correctiva y predictiva, utilizando repuestos y herramientas de primeras marcas.
+            </p>
+        </div>
+    </div>
+
+    {/* Sección de Impacto Operativo */}
+    <div class={styles.impactSection}>
+        <div class={styles.impactContent}>
+            {/* Columna Izquierda: Mensaje Clave */}
+            <div class={styles.messageColumn}>
+                <h2 class={styles.impactTitle}>
+                    UNA FALLA PUEDE <span class={styles.titleHighlight}>DETENER TODA</span> UNA OPERACIÓN.
+                </h2>
+                <p class={styles.impactDescription}>
+                    Sin un programa de mantenimiento estructurado, cada hora de operación acumula desgaste no controlado, incrementando el riesgo de falla imprevista y pérdida de continuidad operativa.
+                </p>
+            </div>
+
+            {/* Columna Derecha: Lista de Beneficios */}
+            <div class={styles.featuresColumn}>
+                <ul class={styles.featuresList}>
+                    {features.map((feature) => (
+                        <li class={styles.featureItem}>
+                            <span class={styles.squareBullet} aria-hidden="true"></span>
+                            <span class={styles.featureText}>{feature}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
