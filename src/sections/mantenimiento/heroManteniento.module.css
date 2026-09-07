@@ -9,8 +9,8 @@
 .heroBanner {
     width: 100%;
     background: var(--col-primary);
-    padding-top: calc(var(--nav-height, 146px) + 5rem);
-    padding-bottom: 5rem;
+    padding-top: calc(var(--nav-height, 146px) + 4rem);
+    padding-bottom: 4rem;
     padding-inline: 7rem;
     display: flex;
     justify-content: center;
@@ -68,7 +68,7 @@
 /* ==================== SECCIÓN DE IMPACTO (BLANCA) ==================== */
 .impactSection {
     width: 100%;
-    padding-block: 5rem;
+    padding-block: 4rem;
     padding-inline: 7rem;
     display: flex;
     justify-content: center;
