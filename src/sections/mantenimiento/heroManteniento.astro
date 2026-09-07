@@ -1,4 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components';
+import { ICONS } from '../../icons/icons';
 import styles from './heroManteniento.module.css';
 
 const features = [
@@ -15,7 +17,7 @@ const features = [
     <div class={styles.heroBanner}>
         <div class={styles.bannerContent}>
             <h1 class={styles.mainTitle}>
-                <span class={styles.titleWhite}>MANTENIMIENTO</span>
+                MANTENIMIENTO
                 <span class={styles.titleAccent}>INDUSTRIAL ESPECIALIZADO</span>
             </h1>
 
@@ -43,7 +45,7 @@ const features = [
                 <ul class={styles.featuresList}>
                     {features.map((feature) => (
                         <li class={styles.featureItem}>
-                            <span class={styles.squareBullet} aria-hidden="true"></span>
+                            <Icon name={ICONS.check2} class={styles.checkIcon} aria-hidden="true" />
                             <span class={styles.featureText}>{feature}</span>
                         </li>
                     ))}

@@ -1,5 +1,6 @@
 export const ICONS = {
     check:          "bi:patch-check-fill",
+    check2:         "bi:check",
     mapPin:         "bi:pin-map-fill",
     clock:          "bi:clock-fill",
     arrowDown:      "bi:chevron-down",
