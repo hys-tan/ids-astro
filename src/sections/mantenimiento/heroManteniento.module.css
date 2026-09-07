@@ -8,7 +8,7 @@
 /* ==================== BANNER SUPERIOR (OSCURO) ==================== */
 .heroBanner {
     width: 100%;
-    background: radial-gradient(circle at 110% 50%, rgb(38, 39, 43, .2) 0%, transparent 60%), var(--col-primary);
+    background: var(--col-primary);
     padding-top: calc(var(--nav-height, 146px) + 5rem);
     padding-bottom: 5rem;
     padding-inline: 7rem;
@@ -23,7 +23,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: clamp(2rem, 2.5vw, 3rem);
-    text-shadow: 0px 0px 5px var(--col-primary);
 }
 
 /* Título Principal */
@@ -48,6 +47,22 @@
     max-width: 750px;
     font-size: var(--fs-p);
     line-height: var(--lh-textL);
+}
+
+/* ==================== DIVISOR DE CONTENIDO ==================== */
+.dividerContainer {
+    width: 100%;
+    padding-inline: 7rem;
+    display: flex;
+    justify-content: center;
+}
+
+.divider {
+    width: 100%;
+    max-width: 98.5rem;
+    border: none;
+    border-top: 2px solid var(--col-shadow);
+    margin: 0;
 }
 
 /* ==================== SECCIÓN DE IMPACTO (BLANCA) ==================== */
@@ -118,7 +133,7 @@
     align-items: center;
     gap: 1.5rem;
     padding-block: 1.4rem;
-    border-bottom: 1px solid var(--col-bordCard2);
+    border-bottom: 1px solid var(--col-shadow);
 }
 
 .checkIcon {
@@ -138,7 +153,8 @@
 /* ==================== RESPONSIVE ==================== */
 @media(max-width: 1300px) {
     .heroBanner,
-    .impactSection {
+    .impactSection,
+    .dividerContainer {
         padding-inline: 2rem;
     }
 }
@@ -156,7 +172,8 @@
 
 @media(max-width: 390px) {
     .heroBanner,
-    .impactSection {
+    .impactSection,
+    .dividerContainer {
         padding-inline: 1rem;
     }
 }

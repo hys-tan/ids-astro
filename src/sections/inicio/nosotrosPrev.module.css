@@ -3,8 +3,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-block: 3rem;
     padding-inline: 7rem;
-    padding-block: 2rem;
 }
 
 .mainContent {

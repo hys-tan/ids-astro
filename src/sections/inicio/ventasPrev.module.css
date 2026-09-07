@@ -4,7 +4,8 @@
     background-color: var(--col-primary);
     display: flex;
     flex-direction: column;
-    padding: 2rem 7rem;
+    padding-block: 5rem 3rem;
+    padding-inline: 7rem;
 }
 
 .mainContent {
