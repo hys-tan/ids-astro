@@ -45,12 +45,14 @@ const {
 		<title>{title}</title>
 		<meta name="description" content={description} />
 	</head>
-	<body>
-		<Navbar client:load />
+	<body transition:animate="none">
+		<Navbar client:load transition:persist />
 		
-		<slot /> <!-- Aquí va el contenido de cada página -->
+		<main transition:animate="none">
+			<slot /> <!-- Aquí va el contenido de cada página -->
+		</main>
 		
-		<Footer />
+		<Footer transition:persist />
 	
 		<!-- Script global de Lenis para Smooth Scroll -->
 		<script>
@@ -91,8 +93,9 @@ const {
             // Ejecutar al cargar la página o al navegar
             document.addEventListener('astro:page-load', initLenis);
 
-            // Limpiar la instancia de Lenis al cambiar de página
-            document.addEventListener('astro:before-swap', () => {
+            // Swap Inteligente: Reemplazar únicamente el <main> para que la Navbar NUNCA sea desmontada ni parpadee
+            document.addEventListener('astro:before-swap', (e: any) => {
+                // Limpiar la instancia de Lenis al cambiar de página
                 // @ts-ignore
                 if (window.lenis) {
                     // @ts-ignore
@@ -100,6 +103,35 @@ const {
                     // @ts-ignore
                     window.lenis = null;
                 }
+
+                // Personalizar el swap de Astro para aislar el cambio solo a <main>
+                e.swap = () => {
+                    // 1. Sincronizar título y metadatos SEO del <head>
+                    document.title = e.newDocument.title;
+                    const oldDesc = document.querySelector('meta[name="description"]');
+                    const newDesc = e.newDocument.querySelector('meta[name="description"]');
+                    if (oldDesc && newDesc) {
+                        oldDesc.setAttribute('content', newDesc.getAttribute('content') || '');
+                    }
+
+                    // 2. Sincronizar nuevos estilos del <head> si la página entrante tiene hojas de estilo adicionales
+                    e.newDocument.head.querySelectorAll('style, link[rel="stylesheet"]').forEach((el: Element) => {
+                        const exists = Array.from(document.head.children).some((child) => child.isEqualNode(el));
+                        if (!exists) {
+                            document.head.appendChild(el.cloneNode(true));
+                        }
+                    });
+
+                    // 3. Reemplazar ÚNICAMENTE el contenedor central <main>
+                    const oldMain = document.querySelector('main');
+                    const newMain = e.newDocument.querySelector('main');
+                    if (oldMain && newMain) {
+                        oldMain.replaceWith(newMain);
+                    }
+
+                    // 4. Asegurar que la nueva página comience siempre arriba
+                    window.scrollTo(0, 0);
+                };
             });
 		</script>
 	</body>

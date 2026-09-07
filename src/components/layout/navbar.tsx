@@ -1,5 +1,5 @@
 // BIBLIOTECAS EXTERNAS
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { Icon } from '@iconify/react';
 import { ICONS } from '../../icons/icons';
 import { Squash as Hamburger } from 'hamburger-react';
@@ -15,6 +15,7 @@ import styles from './navbar.module.css';
 
 // DATOS
 import { navData } from '../../data/navigation';
+import { navigate } from 'astro:transitions/client';
 
 const HAMBURGER_PROPS = {
     size: 28,
@@ -24,10 +25,45 @@ const HAMBURGER_PROPS = {
     label: "Toggle menu"
 } as const;
 
+// Tiempos de espera adaptables según el breakpoint de la media query
+const DESKTOP_CLOSE_DURATION = 620; // ms (> 1100px)
+const MOBILE_CLOSE_DURATION = 420;  // ms (<= 1100px)
+
+const getCloseDuration = () => {
+    if (typeof window !== 'undefined' && window.innerWidth <= 1100) {
+        return MOBILE_CLOSE_DURATION;
+    }
+    return DESKTOP_CLOSE_DURATION;
+};
 
 const Navbar = () => {
     const [isMenuOpen, setMenuOpen] = useState(false);
     const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+    const [noTransition, setNoTransition] = useState(false);
+
+    // Apagar transiciones durante el swap de página para evitar parpadeos o movimientos
+    useEffect(() => {
+        const handleBeforeSwap = () => {
+            setNoTransition(true);
+        };
+
+        const handlePageLoad = () => {
+            // Restaurar transiciones en el siguiente frame cuando la página ya está en posición
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    setNoTransition(false);
+                });
+            });
+        };
+
+        document.addEventListener('astro:before-swap', handleBeforeSwap);
+        document.addEventListener('astro:page-load', handlePageLoad);
+
+        return () => {
+            document.removeEventListener('astro:before-swap', handleBeforeSwap);
+            document.removeEventListener('astro:page-load', handlePageLoad);
+        };
+    }, []);
     
     // Usamos el hook personalizado creado por el usuario
     const { scrollState } = useStickyNavbar(isMenuOpen);
@@ -47,6 +83,15 @@ const Navbar = () => {
         };
     }, [isMenuOpen]);
 
+    // Referencia para cancelar timeout de navegación si se desmonta
+    const navTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    useEffect(() => {
+        return () => {
+            if (navTimeoutRef.current) clearTimeout(navTimeoutRef.current);
+        };
+    }, []);
+
     // ==================== HANDLERS ====================
     const toggleAccordion = (section: string) => {
         setOpenAccordion(prev => prev === section ? null : section);
@@ -54,17 +99,54 @@ const Navbar = () => {
 
     const handleCloseMenu = useCallback(() => {
         setMenuOpen(false);
-        setOpenAccordion(null);
+        const duration = getCloseDuration();
+        // Reset accordion después de que el menú termine de cerrarse para evitar saltos
+        setTimeout(() => {
+            setOpenAccordion(null);
+        }, duration);
     }, []);
+
+    // Manejar clics de navegación con cierre animado antes de cambiar de página
+    const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        // Permitir que Ctrl+click / Cmd+click abra en nueva pestaña normalmente
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) {
+            return;
+        }
+
+        if (!href || href === '#') {
+            e.preventDefault();
+            handleCloseMenu();
+            return;
+        }
+
+        // Si ya estamos en la misma página, solo cerramos el menú sin navegar
+        if (typeof window !== 'undefined' && window.location.pathname === href) {
+            e.preventDefault();
+            handleCloseMenu();
+            return;
+        }
+
+        // Si el menú está abierto (desktop o mobile), esperamos a que termine la animación de cierre
+        if (isMenuOpen) {
+            e.preventDefault();
+            const duration = getCloseDuration();
+            handleCloseMenu();
+
+            if (navTimeoutRef.current) clearTimeout(navTimeoutRef.current);
+            navTimeoutRef.current = setTimeout(() => {
+                navigate(href);
+            }, duration);
+        }
+    }, [isMenuOpen, handleCloseMenu]);
 
     // Renderizar item de navegación
     const renderNavItem = useCallback((item: { label: string; link: string }) => {
         return (
-            <a href={item.link} onClick={handleCloseMenu}>
+            <a href={item.link} onClick={(e) => handleNavClick(e, item.link)}>
                 {item.label}
             </a>
         );
-    }, [handleCloseMenu]);
+    }, [handleNavClick]);
 
     // Determinar la clase de scroll
     let scrollClass = '';
@@ -86,7 +168,7 @@ const Navbar = () => {
             </div>
 
             {/* ==================== HEADER WRAPPER ==================== */}
-            <header className={`${styles.siteHeader} ${scrollClass} ${isMenuOpen ? styles.menuOpen : ''}`}>
+            <header className={`${styles.siteHeader} ${scrollClass} ${isMenuOpen ? styles.menuOpen : ''} ${noTransition ? styles.noTransition : ''}`}>
 
                 {/* TOP BAR */}
                 <div className={styles.topNav}>
@@ -115,7 +197,7 @@ const Navbar = () => {
                 <nav className={styles.mainNav}>
                     <div className={styles.mainNavInner}>
                         {/* Logo */}
-                        <a href="/" className={styles.logoLink}>
+                        <a href="/" className={styles.logoLink} onClick={(e) => handleNavClick(e, '/')}>
                             <img
                                 src="/logo.svg"
                                 alt="Idelsi Soluciones"
@@ -137,7 +219,7 @@ const Navbar = () => {
                             <Button variant="secondary"
                                 href="/contacto"
                                 className={styles.ctaButton}
-                                onClick={handleCloseMenu}
+                                onClick={(e: any) => handleNavClick(e, '/contacto')}
                             >
                                 Cotiza ahora
                             </Button>
@@ -195,7 +277,7 @@ const Navbar = () => {
             <div className={`${styles.mobileMenu} ${isMenuOpen ? styles.open : ''}`}>
                 <div className={styles.mobileMenuContent}>
                     {/* Inicio */}
-                    <a href="/" className={styles.mobileMenuItem} onClick={handleCloseMenu}>
+                    <a href="/" className={styles.mobileMenuItem} onClick={(e) => handleNavClick(e, '/')}>
                         Inicio
                     </a>
 
@@ -257,7 +339,7 @@ const Navbar = () => {
                     <Button variant="secondary"
                         href="/contacto"
                         className={styles.ctaButtonMobile}
-                        onClick={handleCloseMenu}
+                        onClick={(e: any) => handleNavClick(e, '/contacto')}
                     >
                         Cotiza ahora
                     </Button>

@@ -52,5 +52,21 @@ export const useStickyNavbar = (isMenuOpen: boolean) => {
         };
     }, [isMenuOpen]);
 
+    // Reset instantáneo al cambiar de página (Astro View Transitions)
+    useEffect(() => {
+        const handleReset = () => {
+            setScrollState('at-top');
+            lastScrollY.current = 0;
+        };
+
+        document.addEventListener('astro:before-swap', handleReset);
+        document.addEventListener('astro:after-swap', handleReset);
+
+        return () => {
+            document.removeEventListener('astro:before-swap', handleReset);
+            document.removeEventListener('astro:after-swap', handleReset);
+        };
+    }, []);
+
     return { scrollState };
 };
