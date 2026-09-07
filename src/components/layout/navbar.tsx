@@ -26,8 +26,8 @@ const HAMBURGER_PROPS = {
 } as const;
 
 // Tiempos de espera adaptables según el breakpoint de la media query
-const DESKTOP_CLOSE_DURATION = 620; // ms (> 1100px)
-const MOBILE_CLOSE_DURATION = 420;  // ms (<= 1100px)
+const DESKTOP_CLOSE_DURATION = 600; // 620 ms (> 1100px)
+const MOBILE_CLOSE_DURATION = 410;  // 420 ms (<= 1100px)
 
 const getCloseDuration = () => {
     if (typeof window !== 'undefined' && window.innerWidth <= 1100) {
