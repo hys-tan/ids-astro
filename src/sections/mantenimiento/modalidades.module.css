@@ -36,7 +36,7 @@
 .contentGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(3rem, 3.33vw, 4rem);
+    gap: clamp(2rem, 3.33vw, 4rem);
     align-items: center;
 }
 
