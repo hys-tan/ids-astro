@@ -1,0 +1,138 @@
+---
+import { Image } from 'astro:assets';
+import styles from './modalidades.module.css';
+
+import imgPreventivo from '../../assets/img1.webp';
+import imgCorrectivo from '../../assets/img6.webp';
+import imgPredictivo from '../../assets/img7.webp';
+
+const modalidades = [
+    {
+        name: 'PREVENTIVO',
+        description: 'Intervenciones programadas para prevenir fallas, conservar el rendimiento y prolongar la vida útil de los equipos.',
+        image: imgPreventivo,
+        alt: 'Mantenimiento preventivo de equipos industriales'
+    },
+    {
+        name: 'CORRECTIVO',
+        description: 'Diagnóstico e intervención técnica para solucionar fallas y recuperar el funcionamiento del equipo en el menor tiempo posible.',
+        image: imgCorrectivo,
+        alt: 'Mantenimiento correctivo y reparación técnica'
+    },
+    {
+        name: 'PREDICTIVO',
+        description: 'Monitoreo y diagnóstico orientado a detectar anomalías y anticipar posibles fallas antes de que afecten la operación.',
+        image: imgPredictivo,
+        alt: 'Mantenimiento predictivo y análisis industrial'
+    }
+];
+---
+
+<section class={styles.modalidadesSection} data-modalidades-root>
+    <div class={styles.container}>
+        {/* Título de la sección sin highlights */}
+        <div class={styles.header}>
+            <h2 class={styles.sectionTitle}>
+                MODALIDADES DE MANTENIMIENTO
+            </h2>
+        </div>
+
+        <div class={styles.contentGrid}>
+            {/* Columna Izquierda: Pestañas interactivas (Acordeón con jerarquía H3 para SEO) */}
+            <div class={styles.tabsList} role="tablist" aria-label="Modalidades de mantenimiento">
+                {modalidades.map((item, index) => {
+                    const isFirst = index === 0;
+                    return (
+                        <h3 class={styles.accordionHeading}>
+                            <button
+                                type="button"
+                                class={styles.tabItem}
+                                data-tab-index={index}
+                                data-active={isFirst ? 'true' : 'false'}
+                                aria-expanded={isFirst ? 'true' : 'false'}
+                                aria-controls={`tab-content-${index}`}
+                                id={`tab-btn-${index}`}
+                            >
+                                {/* Título principal: solo visualiza PREVENTIVO, pero incluye MANTENIMIENTO oculto para SEO */}
+                                <span class={styles.tabName}>
+                                    <span class={styles.visuallyHidden}>MANTENIMIENTO </span>{item.name}
+                                </span>
+
+                                {/* Contenido colapsable: solo visible en la pestaña seleccionada */}
+                                <div
+                                    id={`tab-content-${index}`}
+                                    class={styles.accordionContent}
+                                    role="region"
+                                    aria-labelledby={`tab-btn-${index}`}
+                                >
+                                    <div class={styles.accordionInner}>
+                                        <p class={styles.tabDescription}>
+                                            {item.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </button>
+                        </h3>
+                    );
+                })}
+            </div>
+
+            {/* Columna Derecha: Visor de imágenes sincronizadas */}
+            <div class={styles.imageShowcase} aria-hidden="true">
+                {modalidades.map((item, index) => {
+                    const isFirst = index === 0;
+                    return (
+                        <div
+                            class={styles.imageWrapper}
+                            data-image-index={index}
+                            data-active={isFirst ? 'true' : 'false'}
+                        >
+                            <Image
+                                src={item.image}
+                                alt={item.alt}
+                                class={styles.image}
+                                loading={isFirst ? 'eager' : 'lazy'}
+                                width={800}
+                                height={500}
+                            />
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function initModalidades() {
+        const root = document.querySelector('[data-modalidades-root]');
+        if (!root || root.hasAttribute('data-initialized')) return;
+        root.setAttribute('data-initialized', 'true');
+
+        const tabs = root.querySelectorAll<HTMLButtonElement>('[data-tab-index]');
+        const images = root.querySelectorAll<HTMLElement>('[data-image-index]');
+
+        tabs.forEach((tab) => {
+            tab.addEventListener('click', () => {
+                const targetIndex = tab.dataset.tabIndex;
+                if (!targetIndex) return;
+
+                // Actualizar pestañas
+                tabs.forEach((t) => {
+                    const isActive = t.dataset.tabIndex === targetIndex;
+                    t.setAttribute('data-active', isActive ? 'true' : 'false');
+                    t.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+                });
+
+                // Actualizar imágenes sincronizadas
+                images.forEach((img) => {
+                    const isActive = img.dataset.imageIndex === targetIndex;
+                    img.setAttribute('data-active', isActive ? 'true' : 'false');
+                });
+            });
+        });
+    }
+
+    initModalidades();
+    document.addEventListener('astro:page-load', initModalidades);
+</script>
