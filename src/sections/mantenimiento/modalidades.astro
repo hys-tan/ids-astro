@@ -43,36 +43,40 @@ const modalidades = [
                 {modalidades.map((item, index) => {
                     const isFirst = index === 0;
                     return (
-                        <h3 class={styles.accordionHeading}>
-                            <button
-                                type="button"
-                                class={styles.tabItem}
-                                data-tab-index={index}
-                                data-active={isFirst ? 'true' : 'false'}
-                                aria-expanded={isFirst ? 'true' : 'false'}
-                                aria-controls={`tab-content-${index}`}
-                                id={`tab-btn-${index}`}
-                            >
-                                {/* Título principal: solo visualiza PREVENTIVO, pero incluye MANTENIMIENTO oculto para SEO */}
-                                <span class={styles.tabName}>
-                                    <span class={styles.visuallyHidden}>MANTENIMIENTO </span>{item.name}
-                                </span>
-
-                                {/* Contenido colapsable: solo visible en la pestaña seleccionada */}
-                                <div
-                                    id={`tab-content-${index}`}
-                                    class={styles.accordionContent}
-                                    role="region"
-                                    aria-labelledby={`tab-btn-${index}`}
+                        <div
+                            class={styles.tabItem}
+                            data-tab-index={index}
+                            data-active={isFirst ? 'true' : 'false'}
+                        >
+                            {/* 1. El H3 SOLO empaqueta al botón activador del encabezado */}
+                            <h3 class={styles.accordionHeading}>
+                                <button
+                                    type="button"
+                                    class={styles.tabTrigger}
+                                    data-tab-trigger
+                                    aria-expanded={isFirst ? 'true' : 'false'}
+                                    aria-controls={`tab-content-${index}`}
+                                    id={`tab-btn-${index}`}
                                 >
-                                    <div class={styles.accordionInner}>
-                                        <p class={styles.tabDescription}>
-                                            {item.description}
-                                        </p>
-                                    </div>
+                                    <span class={styles.visuallyHidden}>MANTENIMIENTO </span>
+                                    <span class={styles.tabName}>{item.name}</span>
+                                </button>
+                            </h3>
+
+                            {/* 2. Contenido colapsable: liberado fuera del H3 y fuera del button */}
+                            <div
+                                id={`tab-content-${index}`}
+                                class={styles.accordionContent}
+                                role="region"
+                                aria-labelledby={`tab-btn-${index}`}
+                            >
+                                <div class={styles.accordionInner}>
+                                    <p class={styles.tabDescription}>
+                                        {item.description}
+                                    </p>
                                 </div>
-                            </button>
-                        </h3>
+                            </div>
+                        </div>
                     );
                 })}
             </div>
@@ -109,19 +113,23 @@ const modalidades = [
         if (!root || root.hasAttribute('data-initialized')) return;
         root.setAttribute('data-initialized', 'true');
 
-        const tabs = root.querySelectorAll<HTMLButtonElement>('[data-tab-index]');
+        const items = root.querySelectorAll<HTMLElement>('[data-tab-index]');
         const images = root.querySelectorAll<HTMLElement>('[data-image-index]');
 
-        tabs.forEach((tab) => {
-            tab.addEventListener('click', () => {
-                const targetIndex = tab.dataset.tabIndex;
+        items.forEach((item) => {
+            const trigger = item.querySelector<HTMLButtonElement>('[data-tab-trigger]');
+            if (!trigger) return;
+
+            trigger.addEventListener('click', () => {
+                const targetIndex = item.dataset.tabIndex;
                 if (!targetIndex) return;
 
-                // Actualizar pestañas
-                tabs.forEach((t) => {
-                    const isActive = t.dataset.tabIndex === targetIndex;
-                    t.setAttribute('data-active', isActive ? 'true' : 'false');
-                    t.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+                // Actualizar tarjetas y atributos de accesibilidad
+                items.forEach((it) => {
+                    const isActive = it.dataset.tabIndex === targetIndex;
+                    it.setAttribute('data-active', isActive ? 'true' : 'false');
+                    const btn = it.querySelector<HTMLButtonElement>('[data-tab-trigger]');
+                    if (btn) btn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
                 });
 
                 // Actualizar imágenes sincronizadas
