@@ -71,9 +71,24 @@ const modalidades = [
                                 aria-labelledby={`tab-btn-${index}`}
                             >
                                 <div class={styles.accordionInner}>
-                                    <p class={styles.tabDescription}>
-                                        {item.description}
-                                    </p>
+                                    <div class={styles.tabBody}>
+                                        {/* Imagen interna exclusiva para Tablet y Móvil */}
+                                        <div class={styles.tabImageWrapper}>
+                                            <Image
+                                                src={item.image}
+                                                alt={item.alt}
+                                                class={styles.tabImage}
+                                                loading="lazy"
+                                                width={600}
+                                                height={375}
+                                            />
+                                        </div>
+
+                                        {/* Descripción */}
+                                        <p class={styles.tabDescription}>
+                                            {item.description}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
