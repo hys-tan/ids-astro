@@ -1,0 +1,303 @@
+/* ==================== SECCIÓN EQUIPOS ==================== */
+.equiposSection {
+    width: 100%;
+    background-color: var(--col-primary);
+    padding-block: 4rem;
+    padding-inline: 7rem;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 98.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 2.5vw, 3rem);
+}
+
+/* ==================== ENCABEZADO DE SECCIÓN ==================== */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sectionTitle {
+    margin: 0;
+    font-size: var(--fs-h2);
+    line-height: var(--lh-title);
+    font-weight: var(--fw-titleCard);
+    font-variation-settings: var(--fv-title);
+    text-transform: uppercase;
+}
+
+/* ==================== VISUALLY HIDDEN (Accesibilidad / SEO) ==================== */
+.visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ==================== GRID PRINCIPAL ==================== */
+.contentGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 2.5vw, 3rem);
+    align-items: start;
+}
+
+/* ==================== LISTA DE PESTAÑAS (COLUMNA IZQUIERDA) ==================== */
+.tabsContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.slidingIndicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--col-wha2);
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: 1;
+    transition: transform 0.35s cubic-bezier(0.2, 0, 0, 1), height 0.3s ease;
+    will-change: transform, height;
+}
+
+.tabButton {
+    position: relative;
+    z-index: 2;
+    appearance: none;
+    background: transparent;
+    border: none;
+    padding: 1.5rem;
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: left;
+    width: 100%;
+    transition: color 0.25s ease;
+}
+
+.tabNumber {
+    font-size: var(--fs-span);
+    font-weight: var(--fw-titleCard);
+    color: var(--col-gray);
+    transition: color 0.25s ease;
+}
+
+.tabName {
+    margin: 0;
+    font-size: var(--fs-h5);
+    font-weight: var(--fw-titleCard);
+    line-height: var(--lh-title);
+    text-transform: uppercase;
+    color: var(--col-gray);
+    transition: color 0.25s ease;
+}
+
+.tabButton[data-active="false"] .tabNumber,
+.tabButton[data-active="false"] .tabName {
+    color: var(--col-gray);
+}
+
+.tabButton[data-active="true"] .tabNumber {
+    color: var(--col-accent);
+}
+
+.tabButton[data-active="true"] .tabName {
+    color: var(--col-secondary);
+}
+
+/* ==================== PANEL DERECHO (IMAGEN + DETALLES) ==================== */
+.displayPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+
+
+    height: 100%;
+    min-height: 0;
+}
+
+/* Visor de Imágenes */
+.imageShowcase {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--col-primary);
+}
+
+.imageWrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    transition-delay: 0s;
+}
+
+.imageWrapper[data-active="true"] {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.19s ease;
+    transition-delay: 0.19s;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+}
+
+/* Título superpuesto dentro de la imagen */
+.imageOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--col-secondary) 0%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: clamp(1.5rem, 1.6vw, 2rem);
+    gap: 0.4rem;
+    pointer-events: none;
+    border-radius: 8px;
+}
+
+.overlayNumber {
+    font-size: var(--fs-span);
+    font-weight: var(--fw-titleCard);
+    color: var(--col-accent);
+}
+
+.overlayTitle {
+    margin: 0;
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-titleCard);
+    font-variation-settings: var(--fv-title);
+    line-height: var(--lh-title);
+    text-transform: uppercase;
+    color: var(--col-primary);
+}
+
+/* Detalles inferiores (Texto y Botón) */
+.detailsContainer {
+    width: 100%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.detailItem {
+    display: none;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: flex-start;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.detailItem[data-active="true"] {
+    display: flex;
+    opacity: 1;
+}
+
+.description {
+    margin: 0;
+    font-size: var(--fs-p);
+    font-weight: var(--fw-subtitle);
+    line-height: var(--lh-textL);
+}
+
+/* Botón CTA con microinteracción hover en el icono */
+.ctaButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+}
+
+.ctaText {
+    font-size: var(--fs-span);
+    font-weight: var(--fw-titleCard);
+    font-variation-settings: var(--fv-title);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ctaIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+.ctaButton:hover .ctaIcon {
+    transform: translateX(6px);
+}
+
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1300px) {
+    .equiposSection {
+        padding-inline: 2rem;
+    }
+}
+
+@media (max-width: 920px) {
+    .contentGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .imageShowcase {
+        min-height: 320px;
+    }
+}
+
+@media (max-width: 670px) {
+    .tabButton {
+        padding: 1rem 1.25rem;
+        gap: 1rem;
+    }
+
+    .imageShowcase {
+        min-height: 250px;
+    }
+}
+
+@media (max-width: 390px) {
+    .equiposSection {
+        padding-inline: 1rem;
+    }
+
+    .tabButton {
+        padding: 0.875rem 1rem;
+    }
+}

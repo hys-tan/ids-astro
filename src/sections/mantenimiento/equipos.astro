@@ -1,0 +1,277 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import { ICONS } from '../../icons/icons';
+import styles from './equipos.module.css';
+
+import img1 from '../../assets/img1.webp';
+import img5 from '../../assets/img5.webp';
+import img6 from '../../assets/img6.webp';
+import img7 from '../../assets/img7.webp';
+import imgPrueba from '../../assets/prueba.webp';
+
+const equipos = [
+    {
+        id: '01',
+        name: 'GRUPOS ELECTRÓGENOS',
+        description: 'Mantenimiento preventivo, correctivo y predictivo para garantizar la continuidad operativa de tus grupos electrógenos.',
+        image: img1,
+        alt: 'Mantenimiento de grupos electrógenos industriales'
+    },
+    {
+        id: '02',
+        name: 'TABLEROS DE TRANSFERENCIA',
+        description: 'Inspección técnica, calibración de parámetros y mantenimiento integral de tableros de transferencia automática y manual.',
+        image: img5,
+        alt: 'Tableros de transferencia de energía eléctrica'
+    },
+    {
+        id: '03',
+        name: 'MOTORES ELÉCTRICOS',
+        description: 'Diagnóstico eléctrico, análisis de vibraciones y mantenimiento especializado para motores de baja y media tensión.',
+        image: img6,
+        alt: 'Mantenimiento y diagnóstico de motores eléctricos'
+    },
+    {
+        id: '04',
+        name: 'SISTEMAS DE BOMBEO',
+        description: 'Servicio técnico para bombas centrífugas, sumergibles y sistemas de presión constante en entornos industriales.',
+        image: img7,
+        alt: 'Mantenimiento de sistemas de bombeo industrial'
+    },
+    {
+        id: '05',
+        name: 'SISTEMAS HVAC',
+        description: 'Mantenimiento de sistemas de climatización industrial para optimizar temperatura, rendimiento y calidad del aire.',
+        image: imgPrueba,
+        alt: 'Sistemas HVAC de climatización y ventilación'
+    },
+    {
+        id: '06',
+        name: 'POZOS A TIERRA',
+        description: 'Medición de resistividad, reactivación química y mantenimiento de sistemas de puesta a tierra bajo normativas técnicas.',
+        image: img1,
+        alt: 'Medición y mantenimiento de pozos a tierra'
+    }
+];
+---
+
+<section class={styles.equiposSection} data-equipos-root>
+    <div class={styles.container}>
+        {/* Encabezado */}
+        <div class={styles.header}>
+            <h2 class={styles.sectionTitle}>
+                EQUIPOS QUE ATENDEMOS
+            </h2>
+        </div>
+
+        <div class={styles.contentGrid}>
+            {/* Columna Izquierda: Pestañas con indicador de fondo deslizante */}
+            <div class={styles.tabsContainer} role="tablist" aria-label="Equipos que atendemos">
+                {/* Fondo deslizante blanco */}
+                <div class={styles.slidingIndicator} data-sliding-indicator aria-hidden="true"></div>
+
+                {equipos.map((item, index) => {
+                    const isFirst = index === 0;
+                    return (
+                        <button
+                            type="button"
+                            role="tab"
+                            id={`equipo-tab-${index}`}
+                            class={styles.tabButton}
+                            data-tab-btn={index}
+                            data-active={isFirst ? 'true' : 'false'}
+                            aria-selected={isFirst ? 'true' : 'false'}
+                            aria-controls={`equipo-panel-${index}`}
+                            tabindex={isFirst ? 0 : -1}
+                        >
+                            <span class={styles.tabNumber}>{item.id}</span>
+                            <span class={styles.tabName}>{item.name}</span>
+                        </button>
+                    );
+                })}
+            </div>
+
+            {/* Columna Derecha: Visor de Imagen Superior + Contenido Inferior */}
+            <div class={styles.displayPanel}>
+                {/* Visor de imágenes sincronizadas */}
+                <div class={styles.imageShowcase}>
+                    {equipos.map((item, index) => {
+                        const isFirst = index === 0;
+                        return (
+                            <div
+                                class={styles.imageWrapper}
+                                data-image-wrapper={index}
+                                data-active={isFirst ? 'true' : 'false'}
+                            >
+                                <Image
+                                    src={item.image}
+                                    alt={item.alt}
+                                    class={styles.image}
+                                    loading={isFirst ? 'eager' : 'lazy'}
+                                    width={800}
+                                    height={500}
+                                />
+                                <div class={styles.imageOverlay}>
+                                    <span class={styles.overlayNumber}>{item.id}</span>
+                                    <h3 class={styles.overlayTitle}>
+                                        <span class={styles.visuallyHidden}>MANTENIMIENTO DE </span>
+                                        {item.name}
+                                    </h3>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+
+                {/* Contenido textual y botón con icono */}
+                <div class={styles.detailsContainer}>
+                    {equipos.map((item, index) => {
+                        const isFirst = index === 0;
+                        return (
+                            <div
+                                id={`equipo-panel-${index}`}
+                                role="tabpanel"
+                                aria-labelledby={`equipo-tab-${index}`}
+                                class={styles.detailItem}
+                                data-detail-item={index}
+                                data-active={isFirst ? 'true' : 'false'}
+                                hidden={!isFirst}
+                            >
+                                <p class={styles.description}>
+                                    {item.description}
+                                </p>
+                                <a href="/contacto" class={styles.ctaButton}>
+                                    <span class={styles.ctaText}>VER SERVICIO</span>
+                                    <Icon name={ICONS.arrowRight} class={styles.ctaIcon} aria-hidden="true" />
+                                </a>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function initEquipos() {
+        const root = document.querySelector('[data-equipos-root]');
+        if (!root || root.hasAttribute('data-initialized')) return;
+        root.setAttribute('data-initialized', 'true');
+
+        const tabsContainer = root.querySelector<HTMLElement>('[role="tablist"]');
+        const indicator = root.querySelector<HTMLElement>('[data-sliding-indicator]');
+        const tabButtons = root.querySelectorAll<HTMLButtonElement>('[data-tab-btn]');
+        const imageWrappers = root.querySelectorAll<HTMLElement>('[data-image-wrapper]');
+        const detailItems = root.querySelectorAll<HTMLElement>('[data-detail-item]');
+
+        if (!tabsContainer || !indicator || tabButtons.length === 0) return;
+
+        function moveIndicator(btn: HTMLButtonElement, immediate = false) {
+            const containerRect = tabsContainer!.getBoundingClientRect();
+            const btnRect = btn.getBoundingClientRect();
+            const top = btnRect.top - containerRect.top;
+            const height = btnRect.height;
+
+            if (immediate) {
+                indicator!.style.transition = 'none';
+                indicator!.style.transform = `translateY(${top}px)`;
+                indicator!.style.height = `${height}px`;
+                void indicator!.offsetHeight;
+                indicator!.style.transition = '';
+            } else {
+                indicator!.style.transition = 'transform 0.35s cubic-bezier(0.2, 0, 0, 1), height 0.3s ease';
+                indicator!.style.transform = `translateY(${top}px)`;
+                indicator!.style.height = `${height}px`;
+            }
+        }
+
+        function setActiveTab(targetIndex: string, immediate = false) {
+            let activeBtn: HTMLButtonElement | null = null;
+
+            tabButtons.forEach((btn) => {
+                const isActive = btn.dataset.tabBtn === targetIndex;
+                btn.setAttribute('data-active', isActive ? 'true' : 'false');
+                btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                btn.setAttribute('tabindex', isActive ? '0' : '-1');
+                if (isActive) activeBtn = btn;
+            });
+
+            if (activeBtn) {
+                moveIndicator(activeBtn, immediate);
+            }
+
+            imageWrappers.forEach((wrapper) => {
+                const isActive = wrapper.dataset.imageWrapper === targetIndex;
+                wrapper.setAttribute('data-active', isActive ? 'true' : 'false');
+            });
+
+            detailItems.forEach((detail) => {
+                const isActive = detail.dataset.detailItem === targetIndex;
+                detail.setAttribute('data-active', isActive ? 'true' : 'false');
+                detail.hidden = !isActive;
+            });
+        }
+
+        // Evento Click en pestañas
+        tabButtons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const idx = btn.dataset.tabBtn;
+                if (idx !== undefined) {
+                    setActiveTab(idx);
+                }
+            });
+        });
+
+        // Navegación accesible con flechas
+        tabsContainer.addEventListener('keydown', (e: KeyboardEvent) => {
+            const currentActive = tabsContainer.querySelector<HTMLButtonElement>('[data-active="true"]');
+            if (!currentActive) return;
+
+            const currentIndex = Array.from(tabButtons).indexOf(currentActive);
+            let newIndex = currentIndex;
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                newIndex = (currentIndex + 1) % tabButtons.length;
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                newIndex = (currentIndex - 1 + tabButtons.length) % tabButtons.length;
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                newIndex = 0;
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                newIndex = tabButtons.length - 1;
+            }
+
+            if (newIndex !== currentIndex) {
+                const targetBtn = tabButtons[newIndex];
+                targetBtn.focus();
+                const idx = targetBtn.dataset.tabBtn;
+                if (idx !== undefined) {
+                    setActiveTab(idx);
+                }
+            }
+        });
+
+        // Posicionar indicador inicialmente
+        const initialActive = tabsContainer.querySelector<HTMLButtonElement>('[data-active="true"]') || tabButtons[0];
+        if (initialActive) {
+            moveIndicator(initialActive, true);
+        }
+
+        // Recalcular posición si cambia el tamaño de la ventana
+        const resizeObserver = new ResizeObserver(() => {
+            const current = tabsContainer.querySelector<HTMLButtonElement>('[data-active="true"]');
+            if (current) {
+                moveIndicator(current, true);
+            }
+        });
+        resizeObserver.observe(tabsContainer);
+    }
+
+    initEquipos();
+    document.addEventListener('astro:page-load', initEquipos);
+</script>

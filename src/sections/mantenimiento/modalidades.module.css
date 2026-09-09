@@ -36,7 +36,7 @@
 .contentGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(2rem, 3.33vw, 4rem);
+    gap: clamp(2rem, 2.5vw, 3rem);
     align-items: center;
 }
 
@@ -102,7 +102,7 @@
 
 .tabName {
     margin: 0;
-    font-size: var(--fs-h4);
+    font-size: var(--fs-h5);
     font-weight: var(--fw-titleCard);
     line-height: var(--lh-title);
     text-transform: uppercase;
