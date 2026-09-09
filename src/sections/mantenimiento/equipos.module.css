@@ -81,7 +81,8 @@
     appearance: none;
     background: transparent;
     border: none;
-    padding: 1.5rem;
+    padding-block: clamp(1.2rem, 1.25vw, 1.5rem);
+    padding-inline: clamp(1rem, 1.25vw, 1.5rem);
     margin: 0;
     font: inherit;
     cursor: pointer;
@@ -181,7 +182,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: clamp(1.5rem, 1.6vw, 2rem);
+    padding: clamp(1.2rem, 1.6vw, 2rem);
     gap: 0.4rem;
     pointer-events: none;
     border-radius: 8px;
@@ -276,28 +277,39 @@
         grid-template-columns: 1fr;
     }
 
+    .displayPanel {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: clamp(1.2rem, 2.60vw, 1.5rem);
+        align-items: start;
+        height: auto;
+    }
+
     .imageShowcase {
-        min-height: 320px;
+        flex: none;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        min-height: 260px;
     }
 }
 
-@media (max-width: 670px) {
-    .tabButton {
-        padding: 1rem 1.25rem;
-        gap: 1rem;
+@media (max-width: 700px) {
+    .displayPanel {
+        display: flex;
+        flex-direction: column;
     }
 
     .imageShowcase {
-        min-height: 250px;
+        min-height: 220px;
+    }
+
+    .tabButton {
+        gap: 1rem;
     }
 }
 
 @media (max-width: 390px) {
     .equiposSection {
         padding-inline: 1rem;
-    }
-
-    .tabButton {
-        padding: 0.875rem 1rem;
     }
 }
