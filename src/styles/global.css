@@ -134,6 +134,7 @@ html.lenis, html.lenis body {
     --fs-tag:         clamp(0.75rem,      0.72vw,     0.875rem);
 */
 
+    --fs-numbers:       clamp(2.8rem,       2.604rem + 0.873vw,     4rem);
     --fs-h1:            clamp(1.75rem,      1.382rem + 1.636vw,     4rem);
     --fs-h2:            clamp(1.5rem,       1.255rem + 1.091vw,     3rem);
     --fs-h3:            clamp(1.125rem,     0.941rem + 0.818vw,     2.25rem);

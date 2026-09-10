@@ -1,0 +1,50 @@
+---
+import styles from './procesoMantenimiento.module.css';
+
+const pasos = [
+    {
+        number: '01',
+        title: 'EVALUAMOS',
+        description: 'Escuchamos el problema y revisamos el estado real del equipo.'
+    },
+    {
+        number: '02',
+        title: 'PLANIFICAMOS',
+        description: 'Definimos alcance, repuestos, tiempos y prioridades.'
+    },
+    {
+        number: '03',
+        title: 'INTERVENIMOS',
+        description: 'Ejecutamos el trabajo con seguridad y método.'
+    },
+    {
+        number: '04',
+        title: 'VALIDAMOS',
+        description: 'Probamos, documentamos y dejamos recomendaciones.'
+    }
+];
+---
+
+<section class={styles.procesoSection} aria-labelledby="proceso-title">
+    <div class={styles.procesoContainer}>
+        {/* Encabezado de Sección */}
+        <div class={styles.procesoHeader}>
+            <h2 id="proceso-title" class={styles.procesoSectionTitle}>
+                PROCESO DE TRABAJO
+            </h2>
+        </div>
+
+        {/* Cuadrícula de 4 Tarjetas de Proceso */}
+        <div class={styles.procesoGrid}>
+            {pasos.map((paso) => (
+                <article class={styles.procesoCard}>
+                    <span class={styles.procesoNumber}>{paso.number}</span>
+                    <div class={styles.procesoCardContent}>
+                        <h3 class={styles.procesoCardTitle}>{paso.title}</h3>
+                        <p class={styles.procesoCardDesc}>{paso.description}</p>
+                    </div>
+                </article>
+            ))}
+        </div>
+    </div>
+</section>

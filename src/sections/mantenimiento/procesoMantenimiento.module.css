@@ -1,0 +1,115 @@
+/* ==================== SECCIÓN PROCESO DE TRABAJO ==================== */
+.procesoSection {
+    width: 100%;
+    background-color: var(--col-primary);
+    padding-block: 4rem;
+    padding-inline: 7rem;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.procesoContainer {
+    width: 100%;
+    max-width: 98.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.5rem, 3.33vw, 4rem);
+}
+
+/* ==================== ENCABEZADO DE SECCIÓN ==================== */
+.procesoHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.procesoSectionTitle {
+    margin: 0;
+    font-size: var(--fs-h2);
+    line-height: var(--lh-title);
+    font-weight: var(--fw-titleCard);
+    text-transform: uppercase;
+}
+
+/* ==================== GRID DE TARJETAS ==================== */
+.procesoGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+}
+
+.procesoCard {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1rem, 1.25vw, 1.5rem);
+    padding-inline: clamp(1.5rem, 2.08vw, 2.5rem);
+    border-right: 1px solid var(--col-shadow);
+}
+
+.procesoCard:first-child {
+    padding-left: 0;
+}
+
+.procesoCard:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+
+.procesoNumber {
+    font-family: var(--ff-garamond);
+    font-size: var(--fs-numbers);
+    font-weight: var(--fw-heroTitle);
+    line-height: 1;
+    color: var(--col-card);
+    transition: color 0.3s ease;
+}
+
+.procesoCard:hover .procesoNumber {
+    color: var(--col-accent);
+}
+
+.procesoCardContent {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.8rem, 0.83vw, 1rem);
+}
+
+.procesoCardTitle {
+    margin: 0;
+    font-size: var(--fs-h4);
+    font-weight: var(--fw-titleCard);
+    line-height: var(--lh-title);
+    text-transform: uppercase;
+}
+
+.procesoCardDesc {
+    margin: 0;
+    font-size: var(--fs-p);
+    line-height: var(--lh-textL);
+    color: var(--col-gray);
+    transition: color 0.3s ease;
+}
+
+.procesoCard:hover .procesoCardDesc {
+    color: var(--col-secondary);
+}
+
+
+@media (max-width: 1300px) {
+    .procesoSection {
+        padding-inline: 2rem;
+    }
+}
+
+@media (max-width: 1020px) {
+    .procesoGrid {
+        
+    }
+}
+
+@media (max-width: 390px) {
+    .procesoSection {
+        padding-inline: 1rem;
+    }
+}
