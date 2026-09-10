@@ -20,8 +20,8 @@
 }
 
 .title {
-    font-size: var(--fs-strong);
-    font-weight: var(--fw-title);
+    font-size: var(--fs-h5);
+    font-weight: var(--fw-titleCard);
     font-variation-settings: var(--fv-title);
     margin: 0;
     text-transform: uppercase;

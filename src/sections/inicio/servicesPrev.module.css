@@ -36,7 +36,7 @@
     overflow: hidden;
     text-decoration: none;
     cursor: default;
-    border-radius: 8px;
+    border-radius: 6px;
 }
 
 /* ==================== CARD IMAGE ==================== */
@@ -113,7 +113,6 @@
 /* ==================== CARD DESCRIPTION ==================== */
 .cardDescription {
     font-size: var(--fs-p);
-    font-weight: var(--fw-subtitle);
     line-height: var(--lh-textL);
     color: var(--col-txtOp);
     margin: 0;
@@ -133,7 +132,7 @@
 .cardCta {
     display: inline-flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 0.7rem;
     font-size: var(--fs-p);
     font-weight: var(--fw-links );
     color: var(--col-accent);
@@ -144,12 +143,12 @@
 }
 
 .ctaArrow {
-    font-size: var(--fs-p);
+    font-size: 1.5rem;
     transition: transform 0.3s ease;
 }
 
 .card:hover .ctaArrow {
-    transform: translateX(4px);
+    transform: translateX(5px);
 }
 
 

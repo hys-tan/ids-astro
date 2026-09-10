@@ -42,7 +42,7 @@
     height: 54px;
     padding: 0 7rem;
     font-size: var(--fs-span);
-    color: var(--col-topNav);
+    color: var(--col-gray);
     font-variation-settings: var(--fv-desc);
     border-bottom: 1.5px solid var(--col-borderS);
 }
@@ -59,7 +59,7 @@
 .topNavItem {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
 .topNav svg {
@@ -69,14 +69,14 @@
 .topNav a {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    color: var(--col-topNav);
+    gap: 0.8rem;
+    color: var(--col-gray);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .topNav a:hover {
-    color: var(--col-ovModal);
+    color: var(--col-secondary);
 }
 
 .divider {
@@ -193,7 +193,7 @@
     flex-direction: column;
     gap: 1.5rem;
     min-width: 150px;
-    font-size: var(--fs-span);
+    font-size: 0.98rem;
     text-align: right;
 }
 
@@ -202,7 +202,7 @@
     text-decoration: none;
     display: block;
     font-variation-settings: var(--fv-desc);
-    font-weight: var(--fw-links);
+    font-weight: var(--fw-titleCard);
 }
 
 .columnLinks {
@@ -216,7 +216,7 @@
 }
 
 .columnLinks li a {
-    color: var(--col-borForm);
+    color: var(--col-gray);
     text-decoration: none;
     transition: color 0.5s ease;
     font-weight: var(--fw-h4);
@@ -263,11 +263,11 @@
     flex-direction: column;
     width: 100%;
     gap: 1.5rem;
-    font-weight: var(--fw-links);
+    font-weight: var(--fw-titleCard);
 }
 
 .mobileMenuItem {
-    font-size: var(--fs-p);
+    font-size: var(--fs-h5);
     color: var(--col-secondary);
     text-decoration: none;
     padding: 0.8rem 0;
@@ -288,15 +288,15 @@
     border: none;
     cursor: pointer;
     font-family: inherit;
-    font-size: var(--fs-p);
+    font-size: var(--fs-h5);
     color: var(--col-secondary);
     font-variation-settings: var(--fv-desc);
-    font-weight: var(--fw-links);
+    font-weight: var(--fw-titleCard);
 }
 
 .accordionIcon {
     transition: transform .3s ease;
-    font-size: var(--fs-p);
+    font-size: var(--fs-h5);
 }
 
 .accordionHeader.active .accordionIcon {
@@ -309,7 +309,7 @@
     transition: max-height .3s ease-in-out;
     padding-left: 1rem;
     font-variation-settings: var(--fv-desc);
-    font-weight: var(--fw-h4);
+    font-weight: var(--fw-links);
 }
 
 .accordionContent.open {
@@ -321,9 +321,9 @@
 }
 
 .accordionLink a {
-    color: var(--col-topNav);
+    color: var(--col-gray);
     text-decoration: none;
-    font-size: var(--fs-p);
+    font-size: var(--fs-h5);
     transition: color .3s ease;
 }
 

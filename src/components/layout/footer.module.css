@@ -1,7 +1,7 @@
 .footer {
     position: relative;
     background-color: var(--col-primary);
-    color: var(--col-txtSec);
+    color: var(--col-gray);
     padding: 3rem 7rem 2rem 7rem;
     box-shadow: 0 -4px 10px 1px var(--col-shadow);
     z-index: 50;
@@ -31,7 +31,7 @@
 
 .columnTitle {
     font-size: var(--fs-h5);
-    font-weight: var(--fw-links);
+    font-weight: var(--fw-titleCard);
     font-variation-settings: var(--fv-nav);
     margin: 0;
     color: var(--col-secondary);
@@ -92,7 +92,7 @@
     display: flex;
     align-items: flex-start;
     gap: 0.8rem;
-    color: var(--col-txtSec);
+    color: var(--col-gray);
     text-decoration: none;
     transition: color 0.3s ease;
     /*
@@ -129,9 +129,9 @@
     justify-content: center;
     width: 40px;
     height: 40px;
-    border: 1.5px solid var(--col-txtSec);
+    border: 1.5px solid var(--col-gray);
     border-radius: 50%;
-    color: var(--col-txtSec);
+    color: var(--col-gray);
     text-decoration: none;
     transition:
         background-color .3s ease,

@@ -15,7 +15,7 @@
     align-items: center;
     gap: clamp(2rem, 2.5vw, 3rem);
     box-shadow: 0px 0px 15px var(--col-shadow);
-    border-radius: 8px;
+    border-radius: 6px;
     border: 1px solid var(--col-bordCard2);
     transition: border-color .3s ease;
 }
@@ -34,7 +34,7 @@
 .title {
     font-size: var(--fs-h2);
     line-height: var(--lh-title);
-    font-weight: var(--fw-title);
+    font-weight: var(--fw-titleCard);
     font-variation-settings: var(--fv-title);
     margin: 0;
     text-transform: uppercase;
@@ -44,7 +44,7 @@
 .description {
     font-size: var(--fs-p);
     line-height: var(--lh-textL);
-    color: var(--col-txtSec);
+    color: var(--col-gray);
     margin: 0;
     max-width: 90%;
     transition: 0.3s ease;
@@ -85,7 +85,7 @@
 
 .ctaIcon {
     display: block;
-    font-size: var(--fs-h4);
+    font-size: 1.5rem;
     transition: transform 0.3s ease;
 }
 

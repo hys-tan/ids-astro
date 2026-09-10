@@ -15,10 +15,10 @@ html {
 }
 
 body {
-    font-family: var(--ff-principal);
+    font-family: var(--ff-montserrat);
     color: var(--col-secondary);
     background-color: var(--col-primary);
-    font-weight: var(--fw-subtitle);
+    font-weight: var(--fw-h4);
     font-variation-settings: var(--fv-desc);
     overflow-x: hidden;
 }
@@ -157,7 +157,9 @@ html.lenis, html.lenis body {
     --gradiente-top:   30%;
 
 /* ----------- FONT FAMILY ----------- */
-    --ff-principal:     'Archivo Variable', sans-serif;
+    --ff-montserrat:    'Montserrat Variable', sans-serif;
+    --ff-archivo:       'Archivo Variable', sans-serif;
+    --ff-garamond:      'EB Garamond Variable', serif;
 
 /* ----------- NAVBAR HEIGHT ----------- */
     --nav-height:       146px;

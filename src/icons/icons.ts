@@ -1,7 +1,7 @@
 export const ICONS = {
     check:          "bi:patch-check-fill",
     check2:         "bi:check",
-    mapPin:         "bi:pin-map-fill",
+    mapPin:         "bi:geo-alt-fill",
     clock:          "bi:clock-fill",
     arrowDown:      "bi:chevron-down",
     arrowRight:     "bi:arrow-right-short",

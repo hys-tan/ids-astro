@@ -37,7 +37,7 @@
 .title {
     font-size: var(--fs-h2);
     line-height: var(--lh-title);
-    font-weight: var(--fw-title);
+    font-weight: var(--fw-titleCard);
     font-variation-settings: var(--fv-title);
     margin: 0;
     text-transform: uppercase;
@@ -46,7 +46,7 @@
 .description {
     font-size: var(--fs-p);
     line-height: var(--lh-textL);
-    max-width: 510px;
+    max-width: 590px;
     margin: 0;
 }
 
@@ -82,7 +82,7 @@
 .statLabel {
     font-size: var(--fs-span);
     font-weight: var(--fw-links);
-    color: var(--col-hovNav);
+    color: var(--col-gray);
     line-height: var(--lh-hero);
     letter-spacing: 0.5px;
     text-transform: uppercase;
@@ -111,9 +111,7 @@
     display: block;
     position: relative;
     z-index: 1;
-    border: 1px solid var(--col-icon);
-    border-radius: 8px;
-    opacity: 0.85;
+    border-radius: 6px;
 }
 
 /* ---------- EXPERIENCE CARD ---------- */
@@ -129,7 +127,7 @@
     flex-direction: column;
     justify-content: center;
     min-width: 200px;
-    border-radius: 8px;
+    border-radius: 6px;
 
     display: none;
 }
