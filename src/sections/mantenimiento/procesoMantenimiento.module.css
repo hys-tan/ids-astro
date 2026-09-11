@@ -104,7 +104,56 @@
 
 @media (max-width: 1020px) {
     .procesoGrid {
-        
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .procesoCard:nth-child(odd) {
+        padding-left: 0;
+        padding-right: clamp(1.5rem, 2.5vw, 2.5rem);
+        border-right: 1px solid var(--col-shadow);
+    }
+
+    .procesoCard:nth-child(even) {
+        padding-left: clamp(1.5rem, 2.5vw, 2.5rem);
+        padding-right: 0;
+        border-right: none;
+    }
+
+    .procesoCard:nth-child(1),
+    .procesoCard:nth-child(2) {
+        padding-top: 0;
+        padding-bottom: clamp(1.5rem, 2.5vw, 2.5rem);
+        border-bottom: 1px solid var(--col-shadow);
+    }
+
+    .procesoCard:nth-child(3),
+    .procesoCard:nth-child(4) {
+        padding-top: clamp(1.5rem, 2.5vw, 2.5rem);
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 620px) {
+    .procesoGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .procesoCard:nth-child(odd),
+    .procesoCard:nth-child(even) {
+        padding-inline: 0;
+        padding-block: clamp(1.25rem, 3vw, 2rem);
+        border-right: none;
+        border-bottom: 1px solid var(--col-shadow);
+    }
+
+    .procesoCard:first-child {
+        padding-top: 0;
+    }
+
+    .procesoCard:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
     }
 }
 
