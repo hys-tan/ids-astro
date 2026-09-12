@@ -87,11 +87,6 @@
     margin: 0;
     font-size: var(--fs-p);
     line-height: var(--lh-textL);
-    color: var(--col-gray);
-    transition: color 0.3s ease;
-}
-
-.procesoCard:hover .procesoCardDesc {
     color: var(--col-secondary);
 }
 

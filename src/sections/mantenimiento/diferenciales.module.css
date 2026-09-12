@@ -31,10 +31,6 @@
     text-transform: uppercase;
 }
 
-.desktopBr {
-    display: inline;
-}
-
 /* ==================== GRID PRINCIPAL ==================== */
 .grid {
     display: grid;
@@ -99,11 +95,6 @@
     font-size: var(--fs-numbers);
     font-weight: var(--fw-heroTitle);
     line-height: 1;
-    color: var(--col-accent);
-    transition: color 0.3s ease;
-}
-
-.cardFeatured:hover .featuredMetric {
     color: var(--col-accent);
 }
 
@@ -177,11 +168,6 @@
     margin: 0;
     font-size: var(--fs-p);
     line-height: var(--lh-textL);
-    color: var(--col-gray);
-    transition: color 0.3s ease;
-}
-
-.card:hover .cardDesc {
     color: var(--col-secondary);
 }
 
@@ -208,10 +194,6 @@
 }
 
 @media (max-width: 1030px) {
-    .desktopBr {
-        display: none;
-    }
-
     .grid {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
