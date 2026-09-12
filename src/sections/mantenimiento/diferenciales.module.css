@@ -1,0 +1,245 @@
+/* ==================== SECCIÓN DIFERENCIALES ==================== */
+.diferencialesSection {
+    width: 100%;
+    background-color: var(--col-primary);
+    padding-block: 4rem;
+    padding-inline: 7rem;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 98.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 2.5vw, 3rem);
+}
+
+/* ==================== ENCABEZADO ==================== */
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.title {
+    margin: 0;
+    font-size: var(--fs-h2);
+    line-height: var(--lh-title);
+    font-weight: var(--fw-titleCard);
+    text-transform: uppercase;
+}
+
+.desktopBr {
+    display: inline;
+}
+
+/* ==================== GRID PRINCIPAL ==================== */
+.grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: clamp(1rem, 1.5vw, 1.5rem);
+    align-items: stretch;
+}
+
+/* ==================== TARJETA DESTACADA (01) ==================== */
+.cardFeatured {
+    grid-row: 1 / -1;
+    grid-column: 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: clamp(2rem, 4vw, 4rem);
+    background-color: var(--col-secondary);
+    color: var(--col-primary);
+    border-radius: 6px;
+    padding: clamp(1.5rem, 2.08vw, 2.5rem);
+    min-height: 640px;
+}
+
+/* Arcos decorativos inferiores */
+.cardFeatured::before,
+.cardFeatured::after {
+    content: '';
+    position: absolute;
+    right: -120px;
+    bottom: -120px;
+    border-radius: 50%;
+    border: 1px solid var(--col-accent);
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.cardFeatured::before {
+    width: 340px;
+    height: 340px;
+}
+
+.cardFeatured::after {
+    width: 240px;
+    height: 240px;
+    right: -70px;
+    bottom: -70px;
+}
+
+.featuredBody {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 1.66vw, 2rem);
+    margin-block: auto;
+}
+
+.featuredMetric {
+    margin: 0;
+    font-family: var(--ff-garamond);
+    font-size: var(--fs-numbers);
+    font-weight: var(--fw-heroTitle);
+    line-height: 1;
+    color: var(--col-accent);
+    transition: color 0.3s ease;
+}
+
+.cardFeatured:hover .featuredMetric {
+    color: var(--col-accent);
+}
+
+.featuredTitle {
+    margin: 0;
+    font-size: var(--fs-h4);
+    font-weight: var(--fw-titleCard);
+    line-height: var(--lh-title);
+    text-transform: uppercase;
+}
+
+.featuredDesc {
+    margin: 0;
+    font-size: var(--fs-p);
+    line-height: var(--lh-textL);
+    color: var(--col-txtOp);
+}
+
+.featuredFooter {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-top: 1px solid var(--col-border);
+    padding-top: 1.25rem;
+    font-size: var(--fs-span);
+    font-weight: var(--fw-links);
+    line-height: var(--lh-hero);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--col-drop);
+}
+
+.featuredFooter strong {
+    color: var(--col-accent);
+    font-weight: var(--fw-titleCard);
+}
+
+/* ==================== TARJETAS SECUNDARIAS ==================== */
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--col-wha2);
+    border: 1px solid var(--col-bordCard2);
+    border-radius: 6px;
+    padding: clamp(1.5rem, 2.08vw, 2.5rem);
+    transition: border-color 0.3s ease;
+    gap: 1rem;
+}
+
+.card:hover {
+    border-color: var(--col-icon);
+}
+
+.cardIcon {
+    width: auto;
+    height: auto;
+    display: grid;
+    font-size: var(--fs-h2);
+    color: var(--col-accent);
+    background-color: transparent;
+}
+
+.cardTitle {
+    font-size: var(--fs-h5);
+    font-weight: var(--fw-titleCard);
+    line-height: var(--lh-title);
+
+}
+
+.cardDesc {
+    margin: 0;
+    font-size: var(--fs-p);
+    line-height: var(--lh-textL);
+    color: var(--col-gray);
+    transition: color 0.3s ease;
+}
+
+.card:hover .cardDesc {
+    color: var(--col-secondary);
+}
+
+.cardFooter {
+    margin-top: auto;
+    padding-top: 1.25rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-top: 1px solid var(--col-bordCard2);
+    font-size: var(--fs-span);
+    font-weight: var(--fw-h4);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--col-gray);
+}
+
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1300px) {
+    .diferencialesSection {
+        padding-inline: 2rem;
+    }
+}
+
+@media (max-width: 1030px) {
+    .desktopBr {
+        display: none;
+    }
+
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    .cardFeatured {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        min-height: 0;
+    }
+}
+
+@media (max-width: 670px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cardFeatured, .card {
+        padding: 1.2rem;
+    }
+}
+
+@media (max-width: 390px) {
+    .diferencialesSection {
+        padding-inline: 1rem;
+    }
+
+    .cardFeatured, .card {
+        padding: 1rem;
+    }
+}

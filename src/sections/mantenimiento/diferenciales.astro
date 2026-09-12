@@ -1,0 +1,95 @@
+---
+import { Icon } from 'astro-icon/components';
+import { ICONS } from '../../icons/icons';
+import styles from './diferenciales.module.css';
+
+const secundarios = [
+    {
+        numero: '02 / PRECISIÓN',
+        icono: ICONS.wrench,
+        titulo: 'Instrumental de medición calibrado',
+        descripcion:
+            'Diagnóstico certero mediante equipos digitales certificados (Kyoritsu y multímetros de alta precisión) para obtener lecturas eléctricas y mecánicas exactas y confiables.',
+    },
+    {
+        numero: '03 / RESPALDO',
+        icono: ICONS.check,
+        titulo: 'Garantía formal de servicio',
+        descripcion:
+            'Cada intervención cuenta con respaldo formal por escrito, garantizando tanto la mano de obra especializada como los repuestos y consumibles suministrados.',
+    },
+    {
+        numero: '04 / SEGURIDAD',
+        icono: ICONS.personVer,
+        titulo: 'Personal técnico homologado y SST',
+        descripcion:
+            'Técnicos multidisciplinarios capacitados por subsistema (grupos electrógenos, tableros, bombas y HVAC), operando bajo estrictos protocolos de seguridad y póliza SCTR en planta.',
+    },
+    {
+        numero: '05 / TRAZABILIDAD',
+        icono: ICONS.document,
+        titulo: 'Informe técnico documentado',
+        descripcion:
+            'Entrega de reporte técnico detallado con registro fotográfico, parámetros medidos, hallazgos críticos y recomendaciones de mantenimiento preventivo para el control de tus activos.',
+    },
+];
+---
+
+<section class={styles.diferencialesSection} aria-labelledby="diferenciales-title">
+    <div class={styles.container}>
+        <header class={styles.header}>
+            <h2 id="diferenciales-title" class={styles.title}>
+                Por qué elegir nuestro servicio de <br class={styles.desktopBr} />
+                mantenimiento industrial
+            </h2>
+        </header>
+
+        <div class={styles.grid}>
+            {/* Tarjeta 01 — Principal / Destacada */}
+            <article class={styles.cardFeatured} aria-labelledby="dif-feat-title">
+                <div class={styles.featuredBody}>
+                    <p class={styles.featuredMetric}>24/7</p>
+                    <h3 id="dif-feat-title" class={styles.featuredTitle}>
+                        Soporte técnico y respuesta ante emergencias
+                    </h3>
+                    <p class={styles.featuredDesc}>
+                        Capacidad de atención inmediata ante contingencias y
+                        fallas imprevistas fuera de horario habitual,
+                        mitigando el impacto de paradas no programadas en la
+                        continuidad de tu operación.
+                    </p>
+                </div>
+
+                <footer class={styles.featuredFooter}>
+                    <span><strong>01</strong> / DISPONIBILIDAD</span>
+                </footer>
+            </article>
+
+            {/* Tarjetas 02 — 05 */}
+            {
+                secundarios.map((item, index) => (
+                    <article
+                        class={styles.card}
+                        aria-labelledby={`dif-title-${index + 2}`}
+                    >
+                        <div class={styles.cardIcon} aria-hidden="true">
+                            <Icon name={item.icono} />
+                        </div>
+
+                        <h3
+                            id={`dif-title-${index + 2}`}
+                            class={styles.cardTitle}
+                        >
+                            {item.titulo}
+                        </h3>
+                        <p class={styles.cardDesc}>{item.descripcion}</p>
+
+                        <footer class={styles.cardFooter}>
+                            <span>{item.numero}</span>
+                        </footer>
+                    </article>
+                ))
+            }
+        </div>
+    </div>
+</section>

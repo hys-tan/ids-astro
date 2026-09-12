@@ -12,6 +12,10 @@ export const ICONS = {
     mail:           "bi:envelope-fill",
     phone:          "bi:telephone-fill",
 
+    wrench:         "bi:wrench-adjustable-circle-fill",
+    personVer:      "bi:person-fill-check",
+    document:       "bi:file-earmark-bar-graph-fill",
+
     //logos redes sociales
     facebook:       "bxl:facebook",
     instagram:      "bxl:instagram",
