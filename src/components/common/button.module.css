@@ -107,7 +107,7 @@
 
 /* Tertiary */
 .tertiary {
-    background: var(--col-secondary);
+    background: var(--col-accent);
     color: var(--col-primary);
     border: none;
 }
@@ -115,19 +115,19 @@
     background: var(--col-primary);
 }
 .tertiary:hover span {
-    color: var(--col-accent);
+    color: var(--col-secondary);
 }
 
 
 /* Quaternary */
 .quaternary {
-    background: var(--col-card);
-    color: var(--col-txtSec);
+    background: var(--col-wha);
+    color: var(--col-primary);
     border: none;
 }
 .quaternary::after {
-    background: var(--col-secondary);
+    background: var(--col-primary);
 }
 .quaternary:hover span {
-    color: var(--col-primary);
+    color: var(--col-secondary);
 }

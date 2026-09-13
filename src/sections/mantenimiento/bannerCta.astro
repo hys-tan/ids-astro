@@ -1,0 +1,54 @@
+---
+import Button from '../../components/common/button';
+import styles from './bannerCta.module.css';
+---
+
+<section class={styles.bannerCtaSection} aria-labelledby="banner-cta-heading">
+    <div class={styles.container}>
+        {/* Bloque Superior: CTA Principal */}
+        <div class={styles.mainCta}>
+            <div class={styles.contentColumn}>
+                <h2 id="banner-cta-heading" class={styles.title}>
+                    ¿LISTO PARA ASEGURAR LA CONTINUIDAD DE TU OPERACIÓN?
+                </h2>
+                <div class={styles.descriptionGroup}>
+                    <p class={styles.description}>
+                        Diseñamos programas de mantenimiento estructurados según la criticidad de tus equipos.
+                    </p>
+                    <p class={styles.description}>
+                        Solicita una visita técnica inicial con nuestros especialistas.
+                    </p>
+                </div>
+            </div>
+
+            <div class={styles.buttonWrapper}>
+                <Button variant="tertiary" href="#">
+                    COTIZAR SERVICIO
+                </Button>
+            </div>
+        </div>
+
+        {/* Bloque Inferior: Contingencia y Emergencias */}
+        <div class={styles.emergencyBar}>
+            <div class={styles.emergencyInfo}>
+                <h3 class={styles.emergencyTitle}>¿Parada crítica en curso?</h3>
+                <p class={styles.emergencyDesc}>
+                    Atendemos contingencias fuera de horario comercial.
+                </p>
+            </div>
+
+            <div class={styles.emergencyActions}>
+                <Button
+                    variant="quaternary"
+                    href="tel:+51967599910"
+                    aria-label="Llamar a emergencias 24/7 al 967 599 910"
+                >
+                    LLAMAR 24/7
+                </Button>
+                <a href="#emergencias" class={styles.linkEmergency}>
+                    VER SERVICIO DE EMERGENCIAS
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
